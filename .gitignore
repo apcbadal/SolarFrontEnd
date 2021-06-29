@@ -1,0 +1,8 @@
+node_modules
+android
+package-lock.json
+ios
+.vscode
+yarn.lock
+metro-config.json
+babel.config.js
