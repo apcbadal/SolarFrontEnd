@@ -12,23 +12,25 @@ import {
 
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
+import * as fonts from '../../constants/font'
+
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
 
 function Location() {
   const locatIcon = (
-    <LocationIcon style={styles.userIcon} name="location-pin" size={25} color="grey" />
+    <LocationIcon style={styles.userIcon} name="location-pin" size={25} color={colors.GREY} />
   )
 
-  const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color="grey" solid />
+  const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY}  solid />
 
   return (
     <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <View style={styles.backBlock}>
+        <TouchableOpacity style={styles.backBlock}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
-        </View>
+        </TouchableOpacity>
         <Image style={styles.solarLogo} source={images.default.solarLogo} />
       </View>
 
@@ -64,7 +66,10 @@ function Location() {
         <TouchableOpacity style={styles.locationBtn}>
           <Text style={styles.locationFont}>Set Location</Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+
         <Text style={styles.skip}>Skip for now</Text>
+        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   )
@@ -99,7 +104,7 @@ const styles = StyleSheet.create({
   },
 
   back: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontSize: 12,
     fontWeight: 'bold',
     color: 'grey',
@@ -130,9 +135,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'column',
     width: '100%',
-    // height: '70%',
     aspectRatio: 4 / 5,
-    // backgroundColor: 'green',
     alignSelf: 'center',
   },
 
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 15,
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     color: colors.BLACK,
     paddingVertical: 10,
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
   },
 
   locationFont: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: '700',
     fontSize: 15,
     color: colors.WHITE,
@@ -181,7 +184,7 @@ const styles = StyleSheet.create({
   },
 
   skip: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: '700',
     fontSize: 15,
     color: colors.BLACK,

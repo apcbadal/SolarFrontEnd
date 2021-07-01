@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native'
 import * as colors from '../../constants/color'
+import * as fonts from '../../constants/font'
+
 
 const Landing = () => {
   return (
@@ -25,6 +27,9 @@ const Landing = () => {
         <TouchableOpacity style={styles.loginBtn}>
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+            <Text style={styles.skipForNow}>Skip for Now</Text>
+          </TouchableOpacity>
       </View>
     </SafeAreaView>
   )
@@ -32,16 +37,14 @@ const Landing = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 0,
     width: '100%',
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 35,
-    // backgroundColor: 'grey'
   },
   heading: {
     fontSize: 33,
-    fontFamily: 'Oswald',
+    fontFamily: fonts.Oswald,
     fontWeight: '300',
     lineHeight: 35,
     color: colors.PRIMARY_RED,
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '25%',
     justifyContent: 'center',
-    // backgroundColor: 'green'
+
   },
 
   containerSecond: {
@@ -59,21 +62,20 @@ const styles = StyleSheet.create({
     height: '25%',
     flexDirection: 'row',
     alignItems: 'center',
-    // backgroundColor: 'white'
   },
   heading2: {
     fontSize: 15,
   },
   dollar: {
     fontSize: 80,
-    fontFamily: 'poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     color: colors.PRIMARY_RED,
-    // top: -20
+
   },
   subtitle: {
     fontSize: 20,
-    fontFamily: 'poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     marginHorizontal: 15,
     color: colors.PRIMARY_RED,
@@ -81,10 +83,10 @@ const styles = StyleSheet.create({
   containerThree: {
     width: '100%',
     height: '20%',
-    // backgroundColor:'violet'
+
   },
   heading3: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: '500',
     lineHeight: 28,
     fontSize: 20,
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     flex: 0,
     top: 10,
     justifyContent: 'center',
-    // backgroundColor: 'green',
+
   },
 
   registerBtn: {
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
   },
 
   loginFont: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: '700',
     fontSize: 15,
     color: colors.BLACK,
@@ -124,12 +126,24 @@ const styles = StyleSheet.create({
   },
 
   registerFont: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: '700',
     fontSize: 15,
     color: colors.WHITE,
     textTransform: 'uppercase',
   },
+  skipForNow: {
+    fontFamily: fonts.Poppins,
+    fontWeight: '700',
+    fontSize: 15,
+    color: colors.BLACK,
+    alignSelf: 'center',
+    paddingTop: 10,
+  },
+
+
+
+
 })
 
 export default Landing

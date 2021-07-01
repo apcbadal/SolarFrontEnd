@@ -10,21 +10,23 @@ import {
 } from 'react-native'
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
+import * as fonts from '../../constants/font'
+
 import Icon from 'react-native-vector-icons/FontAwesome'
-// import Ant from "react-native-vector-icons/AntDesign";
+
 
 function Register() {
-  const userIcon = <Icon style={styles.userIcon} name="user" size={25} color="grey" solid />
+  const userIcon = <Icon style={styles.userIcon} name="user" size={25} color={colors.GREY}  solid />
 
   const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color="grey" solid />
 
   return (
     <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <View style={styles.backBlock}>
+        <TouchableOpacity style={styles.backBlock}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
-        </View>
+        </TouchableOpacity>
         <Image style={styles.solarLogo} source={images.default.solarLogo} />
       </View>
 
@@ -56,7 +58,9 @@ function Register() {
         <TouchableOpacity style={styles.registerBtn}>
           <Text style={styles.registerFont}>Register</Text>
         </TouchableOpacity>
-        <Text style={styles.alreadyUser}>Already a user? Login</Text>
+        <TouchableOpacity>
+          <Text style={styles.alreadyUser}>Already a user? Login</Text>
+        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   )
@@ -91,10 +95,10 @@ const styles = StyleSheet.create({
   },
 
   back: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontSize: 12,
     fontWeight: 'bold',
-    color: 'grey',
+    color: colors.GREY,
     textTransform: 'uppercase',
   },
 
@@ -117,14 +121,13 @@ const styles = StyleSheet.create({
 
   userIcon: {
     paddingRight: 10,
+    color: colors.GREY
   },
 
   inputContainer: {
     flexDirection: 'column',
     width: '100%',
-    // height: '70%',
     aspectRatio: 4 / 5,
-    // backgroundColor: 'green',
     alignSelf: 'center',
   },
 
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 15,
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     color: colors.BLACK,
     paddingVertical: 10,
@@ -165,7 +168,7 @@ const styles = StyleSheet.create({
   },
 
   registerFont: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: '700',
     fontSize: 15,
     color: colors.WHITE,
@@ -173,7 +176,7 @@ const styles = StyleSheet.create({
   },
 
   alreadyUser: {
-    fontFamily: 'Poppins',
+    fontFamily: fonts.Poppins,
     fontWeight: '700',
     fontSize: 15,
     color: colors.BLACK,
