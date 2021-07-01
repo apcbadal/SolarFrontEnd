@@ -14,9 +14,8 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-
 function Register() {
-  const userIcon = <Icon style={styles.userIcon} name="user" size={25} color={colors.GREY}  solid />
+  const userIcon = <Icon style={styles.userIcon} name="user" size={25} color={colors.GREY} solid />
 
   const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color="grey" solid />
 
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
 
   userIcon: {
     paddingRight: 10,
-    color: colors.GREY
+    color: colors.GREY,
   },
 
   inputContainer: {

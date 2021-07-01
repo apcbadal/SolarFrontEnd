@@ -16,7 +16,9 @@ import * as fonts from '../../constants/font'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 function Login() {
-  const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY}  solid />
+  const backIcon = (
+    <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
+  )
 
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
@@ -53,7 +55,6 @@ function Login() {
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
-  
   )
 }
 

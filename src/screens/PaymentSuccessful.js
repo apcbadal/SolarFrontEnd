@@ -19,14 +19,14 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
 
 function PaymentSuccessful() {
-
-  const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY}  solid />
+  const backIcon = (
+    <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
+  )
 
   return (
     <SafeAreaView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.backBlock}>
-            
           {backIcon}
           <Text style={styles.back}>Back</Text>
         </TouchableOpacity>
@@ -40,9 +40,7 @@ function PaymentSuccessful() {
         <TouchableOpacity style={styles.buyBtn}>
           <Text style={styles.loginAgain}>Login Again</Text>
         </TouchableOpacity>
-
       </View>
-
     </SafeAreaView>
   )
 }
@@ -86,26 +84,22 @@ const styles = StyleSheet.create({
   backIcon: {
     paddingRight: 5,
   },
-  
+
   checkContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 50
-
+    paddingVertical: 50,
   },
   checkIcon: {
-    width:  150,
+    width: 150,
     height: 150,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
-
-
-  subtitleContainer:{
+  subtitleContainer: {
     alignItems: 'center',
-    justifyContent:'center'
-
+    justifyContent: 'center',
   },
 
   subtitle: {
@@ -117,13 +111,9 @@ const styles = StyleSheet.create({
     color: colors.PRIMARY_RED,
   },
 
- 
-
   btnContainer: {
     width: '100%',
     aspectRatio: 7 / 3,
-    
-
   },
 
   buyBtn: {
@@ -141,5 +131,4 @@ const styles = StyleSheet.create({
     color: colors.WHITE,
     textTransform: 'uppercase',
   },
-  
 })

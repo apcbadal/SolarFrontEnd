@@ -19,8 +19,9 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
 
 function PrimeMember() {
-
-  const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY}  solid />
+  const backIcon = (
+    <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
+  )
 
   return (
     <SafeAreaView behavior="position" style={styles.mainContainer}>
@@ -34,10 +35,10 @@ function PrimeMember() {
       <View style={styles.amountContainer}>
         <Text style={styles.dollar}>$97</Text>
       </View>
-      <View style = {styles.subtitleContainer}>
+      <View style={styles.subtitleContainer}>
         <Text style={styles.subtitle}>Prime Membership</Text>
       </View>
-      <View style = {styles.bulletPointContainer}>
+      <View style={styles.bulletPointContainer}>
         <Text style={styles.bulletPoint}>1. Complete details of user</Text>
         <Text style={styles.bulletPoint}>2. Secured payment gateway</Text>
         <Text style={styles.bulletPoint}>3. Unlimited user date</Text>
@@ -47,10 +48,9 @@ function PrimeMember() {
           <Text style={styles.buyFont}>Buy</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-            <Text style={styles.skipForNow}>Skip for Now</Text>
+          <Text style={styles.skipForNow}>Skip for Now</Text>
         </TouchableOpacity>
       </View>
-
     </SafeAreaView>
   )
 }
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '25%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   dollar: {
@@ -107,13 +107,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     color: colors.PRIMARY_RED,
-
   },
 
-  subtitleContainer:{
+  subtitleContainer: {
     alignItems: 'center',
-    justifyContent:'center'
-
+    justifyContent: 'center',
   },
 
   subtitle: {
@@ -129,22 +127,20 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     paddingHorizontal: '10%',
-    paddingVertical: '8%'
-
+    paddingVertical: '8%',
   },
-  bulletPoint:{
+  bulletPoint: {
     fontSize: 15,
-    color: '#4F4F4F', 
+    color: '#4F4F4F',
     fontFamily: fonts.Poppins,
     fontWeight: '700',
-    padding: 5
+    padding: 5,
   },
 
   btnContainer: {
     width: '100%',
     aspectRatio: 7 / 3,
     top: 20,
-
   },
 
   buyBtn: {
@@ -162,7 +158,7 @@ const styles = StyleSheet.create({
     color: colors.WHITE,
     textTransform: 'uppercase',
   },
-  
+
   skipForNow: {
     fontFamily: fonts.Poppins,
     fontWeight: '700',
@@ -171,5 +167,4 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingTop: 35,
   },
-
 })

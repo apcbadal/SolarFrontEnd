@@ -1,14 +1,13 @@
 import React from 'react'
 import {
-    StyleSheet,
-    KeyboardAvoidingView,
-    Text,
-    Image,
-    View,
-    TextInput,
-    TouchableOpacity,
-  } from 'react-native'
-
+  StyleSheet,
+  KeyboardAvoidingView,
+  Text,
+  Image,
+  View,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native'
 
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
@@ -16,10 +15,10 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-
-
 function ResetPassword() {
-    const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color= {colors.GREY} solid />
+  const backIcon = (
+    <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
+  )
 
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
@@ -43,144 +42,139 @@ function ResetPassword() {
         </View>
       </View>
 
-      <View style ={styles.containerFour}>
+      <View style={styles.containerFour}>
         <TouchableOpacity style={styles.sendBtn}>
           <Text style={styles.sendEmailFont}>Send Email</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-            <Text style={styles.newUser}>New user? Register</Text>
+          <Text style={styles.newUser}>New user? Register</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
-
   )
 }
 
 export default ResetPassword
 
-
 const styles = StyleSheet.create({
-    mainContainer: {
-      width: '100%',
-      height: '100%',
-      paddingHorizontal: 20,
-      paddingVertical: 25,
-    },
-  
-    headerContainer: {
-      width: '100%',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-  
-    solarLogo: {
-      width: '20%',
-      aspectRatio: 5 / 4,
-    },
-  
-    backBlock: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  
-    back: {
-      fontFamily: fonts.Poppins,
-      fontSize: 12,
-      fontWeight: 'bold',
-      color: colors.GREY,
-      textTransform: 'uppercase',
-    },
-  
-    backIcon: {
-      paddingRight: 5,
-    },
-  
-    resetBlock: {
-      flexDirection: 'row',
-      paddingHorizontal: 5,
-      alignItems: 'center',
-      paddingVertical: 8
-    },
-  
-    resetTxt: {
-      fontSize: 25,
-      fontWeight: 'bold',
-      color: colors.PRIMARY_RED,
-      paddingTop: 10,
-      paddingLeft: 10,
-      paddingRight: 10,
-    },
-  
-    userIcon: {
-      paddingRight: 10,
-    },
-  
-    inputContainer: {
-      flexDirection: 'column',
-      width: '100%',
-      aspectRatio: 10/ 4,
-      alignSelf: 'center',
-      paddingTop: 15
-    },
-  
-    container: {
-      width: '100%',
-      height: '20%',
-      paddingVertical: -10,
-    },
-  
-    input: {
-      width: '100%',
-      height: 50,
-      borderWidth: 2,
-      borderColor: colors.BLACK,
-    },
-  
-    text: {
-      fontSize: 15,
-      fontFamily: fonts.Poppins,
-      fontWeight: 'bold',
-      color: colors.BLACK,
-      paddingVertical: 10,
-    },
-  
-    containerFour: {
-      width: '100%',
-      height: '30%',                                         //Contain Send Button             
-      paddingTop: 15,
-      
-    },
-  
-    sendBtn: {
-      backgroundColor: colors.PRIMARY_RED,
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%',
-      height: 50,
+  mainContainer: {
+    width: '100%',
+    height: '100%',
+    paddingHorizontal: 20,
+    paddingVertical: 25,
+  },
 
-    },
-  
-    sendEmailFont: {
-      fontFamily: fonts.Poppins,
-      fontWeight: '700',
-      fontSize: 15,
-      color: colors.WHITE,
-      textTransform: 'uppercase',
-    },
-  
-    newUser: {
-      fontFamily: fonts.Poppins,
-      fontWeight: '700',
-      fontSize: 15,
-      color: colors.BLACK,
-      alignSelf: 'center',
-      paddingTop: 30,
-    },
-    locked: {
-      width: 21,
-      height: 28,
-    },
-  })
-  
+  headerContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+
+  solarLogo: {
+    width: '20%',
+    aspectRatio: 5 / 4,
+  },
+
+  backBlock: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  back: {
+    fontFamily: fonts.Poppins,
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: colors.GREY,
+    textTransform: 'uppercase',
+  },
+
+  backIcon: {
+    paddingRight: 5,
+  },
+
+  resetBlock: {
+    flexDirection: 'row',
+    paddingHorizontal: 5,
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+
+  resetTxt: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: colors.PRIMARY_RED,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+
+  userIcon: {
+    paddingRight: 10,
+  },
+
+  inputContainer: {
+    flexDirection: 'column',
+    width: '100%',
+    aspectRatio: 10 / 4,
+    alignSelf: 'center',
+    paddingTop: 15,
+  },
+
+  container: {
+    width: '100%',
+    height: '20%',
+    paddingVertical: -10,
+  },
+
+  input: {
+    width: '100%',
+    height: 50,
+    borderWidth: 2,
+    borderColor: colors.BLACK,
+  },
+
+  text: {
+    fontSize: 15,
+    fontFamily: fonts.Poppins,
+    fontWeight: 'bold',
+    color: colors.BLACK,
+    paddingVertical: 10,
+  },
+
+  containerFour: {
+    width: '100%',
+    height: '30%', //Contain Send Button
+    paddingTop: 15,
+  },
+
+  sendBtn: {
+    backgroundColor: colors.PRIMARY_RED,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: 50,
+  },
+
+  sendEmailFont: {
+    fontFamily: fonts.Poppins,
+    fontWeight: '700',
+    fontSize: 15,
+    color: colors.WHITE,
+    textTransform: 'uppercase',
+  },
+
+  newUser: {
+    fontFamily: fonts.Poppins,
+    fontWeight: '700',
+    fontSize: 15,
+    color: colors.BLACK,
+    alignSelf: 'center',
+    paddingTop: 30,
+  },
+  locked: {
+    width: 21,
+    height: 28,
+  },
+})

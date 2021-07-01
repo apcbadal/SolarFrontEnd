@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-na
 import * as colors from '../../constants/color'
 import * as fonts from '../../constants/font'
 
-
 const Landing = () => {
   return (
     <SafeAreaView style={styles.container}>
@@ -28,8 +27,8 @@ const Landing = () => {
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-            <Text style={styles.skipForNow}>Skip for Now</Text>
-          </TouchableOpacity>
+          <Text style={styles.skipForNow}>Skip for Now</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   )
@@ -54,7 +53,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '25%',
     justifyContent: 'center',
-
   },
 
   containerSecond: {
@@ -71,7 +69,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     color: colors.PRIMARY_RED,
-
   },
   subtitle: {
     fontSize: 20,
@@ -83,7 +80,6 @@ const styles = StyleSheet.create({
   containerThree: {
     width: '100%',
     height: '20%',
-
   },
   heading3: {
     fontFamily: fonts.Poppins,
@@ -96,7 +92,6 @@ const styles = StyleSheet.create({
     flex: 0,
     top: 10,
     justifyContent: 'center',
-
   },
 
   registerBtn: {
@@ -140,10 +135,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingTop: 10,
   },
-
-
-
-
 })
 
 export default Landing

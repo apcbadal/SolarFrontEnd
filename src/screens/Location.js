@@ -22,7 +22,9 @@ function Location() {
     <LocationIcon style={styles.userIcon} name="location-pin" size={25} color={colors.GREY} />
   )
 
-  const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY}  solid />
+  const backIcon = (
+    <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
+  )
 
   return (
     <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
@@ -67,8 +69,7 @@ function Location() {
           <Text style={styles.locationFont}>Set Location</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-
-        <Text style={styles.skip}>Skip for now</Text>
+          <Text style={styles.skip}>Skip for now</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
