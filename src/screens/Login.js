@@ -15,7 +15,7 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-function Login() {
+function Login({ navigation }) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -23,7 +23,7 @@ function Login() {
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.backBlock}>
+        <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
         </TouchableOpacity>
@@ -47,10 +47,13 @@ function Login() {
       </View>
 
       <View>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => navigation.navigate('LeadDetails')}
+        >
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
           <Text style={styles.newUser}>New user? Register</Text>
         </TouchableOpacity>
       </View>
@@ -66,6 +69,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 25,
+    backgroundColor: colors.WHITE,
   },
 
   headerContainer: {

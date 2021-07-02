@@ -14,7 +14,7 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-function Register() {
+function Register({ navigation }) {
   const userIcon = <Icon style={styles.userIcon} name="user" size={25} color={colors.GREY} solid />
 
   const backIcon = <Icon style={styles.backIcon} name="chevron-left" size={15} color="grey" solid />
@@ -22,7 +22,7 @@ function Register() {
   return (
     <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.backBlock}>
+        <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
         </TouchableOpacity>
@@ -54,10 +54,13 @@ function Register() {
       </View>
 
       <View>
-        <TouchableOpacity style={styles.registerBtn}>
+        <TouchableOpacity
+          style={styles.registerBtn}
+          onPress={() => navigation.navigate('Location')}
+        >
           <Text style={styles.registerFont}>Register</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.alreadyUser}>Already a user? Login</Text>
         </TouchableOpacity>
       </View>
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 25,
+    backgroundColor: colors.WHITE,
   },
 
   headerContainer: {
@@ -180,6 +184,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: colors.BLACK,
     alignSelf: 'center',
-    paddingTop: 8,
+    paddingTop: 12,
   },
 })

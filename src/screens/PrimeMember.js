@@ -18,7 +18,7 @@ import * as fonts from '../../constants/font'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
 
-function PrimeMember() {
+function PrimeMember({ navigation }) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -26,7 +26,7 @@ function PrimeMember() {
   return (
     <SafeAreaView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.backBlock}>
+        <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
         </TouchableOpacity>
@@ -44,10 +44,10 @@ function PrimeMember() {
         <Text style={styles.bulletPoint}>3. Unlimited user date</Text>
       </View>
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.buyBtn}>
+        <TouchableOpacity style={styles.buyBtn} onPress={() => navigation.navigate('Payment')}>
           <Text style={styles.buyFont}>Buy</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('LeadDetails')}>
           <Text style={styles.skipForNow}>Skip for Now</Text>
         </TouchableOpacity>
       </View>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-na
 import * as colors from '../../constants/color'
 import * as fonts from '../../constants/font'
 
-const Landing = () => {
+const Landing = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headingContainer}>
@@ -20,10 +20,13 @@ const Landing = () => {
       </View>
 
       <View style={styles.containerFour}>
-        <TouchableOpacity style={styles.registerBtn}>
+        <TouchableOpacity
+          style={styles.registerBtn}
+          onPress={() => navigation.navigate('Register')}
+        >
           <Text style={styles.registerFont}>Register</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -40,6 +43,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 35,
+    backgroundColor: colors.WHITE,
   },
   heading: {
     fontSize: 33,
