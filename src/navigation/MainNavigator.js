@@ -5,6 +5,20 @@ import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createStackNavigator } from 'react-navigation-stack'
 import { Text, StyleSheet, Platform, Button } from 'react-native'
 import Landing from '../screens/Landing'
+import Location from '../screens/Location'
+import Login from '../screens/Login'
+import MakePayment from '../screens/MakePayment'
+import PaymentDetails from '../screens/PaymentDetails'
+import PaymentSuccessful from '../screens/PaymentSuccessful'
+import PrimeMember from '../screens/PrimeMember'
+import Register from '../screens/Register'
+import ResetPassword from '../screens/ResetPassword'
+import SetPassword from '../screens/SetPassword'
+import Splash from '../screens/splash'
+import LeadDetails from '../screens/LeadDetails'
+
+import * as images from '../../constants/images'
+
 class NavigationDrawerStructure extends Component {
   toggleDrawer = () => {
     this.props.navigationProps.toggleDrawer()
@@ -36,6 +50,50 @@ const FirstActivity_StackNavigator = createStackNavigator({
       },
       headerTintColor: '#fff',
     }),
+  },
+  Location: {
+    screen: Location,
+    navigationOptions: { headerShown: false },
+  },
+  Login: {
+    screen: Login,
+    navigationOptions: { headerShown: false },
+  },
+  Payment: {
+    screen: MakePayment,
+    navigationOptions: { headerShown: false },
+  },
+  PaymentDetail: {
+    screen: PaymentDetails,
+    navigationOptions: { headerShown: false },
+  },
+  Register: {
+    screen: Register,
+    navigationOptions: { headerShown: false },
+  },
+  LeadDetails: {
+    screen: LeadDetails,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: (
+        <Image
+          source={images.default.solarLogo}
+          style={{ width: 50, height: 30, paddingRight: 10 }}
+        />
+      ), //will be change later, this is main header of application
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />, // drawer icon will appear
+      headerStyle: {
+        backgroundColor: '#fff',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+  PrimeMember: {
+    screen: PrimeMember,
+    navigationOptions: { headerShown: false },
+  },
+  PaymentSuccess: {
+    screen: PaymentSuccessful,
+    navigationOptions: { headerShown: false },
   },
   //add more in stack here
 })

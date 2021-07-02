@@ -15,7 +15,7 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-function PaymentDetails() {
+function PaymentDetails({ navigation }) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -23,7 +23,7 @@ function PaymentDetails() {
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.backBlock}>
+        <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
         </TouchableOpacity>
@@ -60,7 +60,7 @@ function PaymentDetails() {
       </View>
 
       <View style={styles.containerFour}>
-        <TouchableOpacity style={styles.sendBtn}>
+        <TouchableOpacity style={styles.sendBtn} onPress={() => navigation.navigate('PrimeMember')}>
           <Text style={styles.sendEmailFont}>Save Details</Text>
         </TouchableOpacity>
         <TouchableOpacity>

@@ -17,7 +17,7 @@ import * as fonts from '../../constants/font'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
 
-function Location() {
+function Location({ navigation }) {
   const locatIcon = (
     <LocationIcon style={styles.userIcon} name="location-pin" size={25} color={colors.GREY} />
   )
@@ -29,7 +29,7 @@ function Location() {
   return (
     <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.backBlock}>
+        <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
         </TouchableOpacity>
@@ -65,10 +65,13 @@ function Location() {
       </ScrollView>
 
       <View style={{ paddingTop: 10 }}>
-        <TouchableOpacity style={styles.locationBtn}>
+        <TouchableOpacity
+          style={styles.locationBtn}
+          onPress={() => navigation.navigate('PaymentDetail')}
+        >
           <Text style={styles.locationFont}>Set Location</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('LeadDetails')}>
           <Text style={styles.skip}>Skip for now</Text>
         </TouchableOpacity>
       </View>
@@ -84,6 +87,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 25,
+    backgroundColor: colors.WHITE,
   },
 
   headerContainer: {

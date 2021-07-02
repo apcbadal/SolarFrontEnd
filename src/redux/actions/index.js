@@ -1,10 +1,10 @@
-import { USER_STATE_CHANGE,  CLEAR_DATA} from '../Constants'
-import FirebaseConfig from "../../components/config";
+import { USER_STATE_CHANGE, CLEAR_DATA } from '../Constants'
+import FirebaseConfig from '../../components/config'
 
 export function clearData() {
-    return ((dispatch) => {
-        dispatch({type: CLEAR_DATA})
-    })
+  return (dispatch) => {
+    dispatch({ type: CLEAR_DATA })
+  }
 }
 
 /*export function fetchUser() {

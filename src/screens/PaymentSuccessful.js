@@ -18,7 +18,7 @@ import * as fonts from '../../constants/font'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
 
-function PaymentSuccessful() {
+function PaymentSuccessful({ navigation }) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -37,7 +37,7 @@ function PaymentSuccessful() {
         <Text style={styles.subtitle}>Payment Successful</Text>
       </View>
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.buyBtn}>
+        <TouchableOpacity style={styles.buyBtn} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.loginAgain}>Login Again</Text>
         </TouchableOpacity>
       </View>
@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 25,
+    backgroundColor: colors.WHITE,
   },
 
   headerContainer: {
