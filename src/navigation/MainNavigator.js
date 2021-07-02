@@ -29,7 +29,7 @@ const FirstActivity_StackNavigator = createStackNavigator({
   Home: {
     screen: Landing,
     navigationOptions: ({ navigation }) => ({
-      headerRight: 'Solar Front', //will be change later, this is main header of application
+      headerRight: <Text>Solar </Text>, //will be change later, this is main header of application
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />, // drawer icon will appear
       headerStyle: {
         backgroundColor: '#fff',
