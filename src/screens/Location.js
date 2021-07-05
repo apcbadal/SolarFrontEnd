@@ -16,6 +16,7 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
+import sizes from '../../constants/sizes'
 
 function Location({ navigation }) {
   const locatIcon = (
@@ -62,19 +63,22 @@ function Location({ navigation }) {
           <Text style={styles.text}>Zipcode</Text>
           <TextInput style={styles.input}></TextInput>
         </View>
+        
       </ScrollView>
 
-      <View style={{ paddingTop: 10 }}>
+     
+        <View style={{ paddingTop: 10 }}>
         <TouchableOpacity
-          style={styles.locationBtn}
-          onPress={() => navigation.navigate('PaymentDetail')}
-        >
-          <Text style={styles.locationFont}>Set Location</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('LeadDetails')}>
-          <Text style={styles.skip}>Skip for now</Text>
-        </TouchableOpacity>
-      </View>
+            style={styles.locationBtn}
+            onPress={() => navigation.navigate('PaymentDetail')}
+          >
+            <Text style={styles.locationFont}>Set Location</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('LeadDetails')}>
+            <Text style={styles.skip}>Skip for now</Text>
+          </TouchableOpacity>
+        </View>
+      
     </KeyboardAvoidingView>
   )
 }
@@ -83,10 +87,9 @@ export default Location
 
 const styles = StyleSheet.create({
   mainContainer: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingHorizontal: 20,
-    paddingVertical: 25,
+    paddingTop: 25,
     backgroundColor: colors.WHITE,
   },
 
@@ -112,7 +115,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Poppins,
     fontSize: 12,
     fontWeight: 'bold',
-    color: 'grey',
+    color: colors.GREY,
     textTransform: 'uppercase',
   },
 
@@ -140,13 +143,13 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'column',
     width: '100%',
-    aspectRatio: 4 / 5,
+    aspectRatio: 4/5,
     alignSelf: 'center',
   },
 
   container: {
     width: '100%',
-    height: '20%',
+    // height: '20%',
     paddingVertical: -10,
   },
 
@@ -167,7 +170,7 @@ const styles = StyleSheet.create({
 
   containerFour: {
     width: '100%',
-    height: '10%',
+    // height: '10%',
     justifyContent: 'center',
     backgroundColor: 'grey',
   },
@@ -177,7 +180,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 50,
+    height: sizes.BTN_HEIGHT,
   },
 
   locationFont: {

@@ -14,6 +14,7 @@ import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import sizes from '../../constants/sizes'
 
 function Login({ navigation }) {
   const backIcon = (
@@ -42,8 +43,11 @@ function Login({ navigation }) {
         </View>
         <View>
           <Text style={styles.text}>Password</Text>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput style={styles.input}></TextInput>          
         </View>
+        <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
+          <Text style={styles.forgotPass}>Forgot Password ?</Text>
+        </TouchableOpacity>
       </View>
 
       <View>
@@ -65,8 +69,7 @@ export default Login
 
 const styles = StyleSheet.create({
   mainContainer: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 25,
     backgroundColor: colors.WHITE,
@@ -160,13 +163,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 50,
+    height: sizes.BTN_HEIGHT,
   },
 
   loginFont: {
     fontFamily: fonts.Poppins,
     fontWeight: '700',
-    fontSize: 15,
+    fontSize: 16,
     color: colors.WHITE,
     textTransform: 'uppercase',
   },
@@ -174,7 +177,7 @@ const styles = StyleSheet.create({
   newUser: {
     fontFamily: fonts.Poppins,
     fontWeight: '700',
-    fontSize: 15,
+    fontSize: 16,
     color: colors.BLACK,
     alignSelf: 'center',
     paddingTop: 30,
@@ -182,5 +185,14 @@ const styles = StyleSheet.create({
   userLockIcon: {
     width: 25,
     height: 25,
+  },
+  forgotPass: {
+    fontSize: 16,
+    fontFamily: fonts.Poppins,
+    fontWeight: 'bold',
+    color: colors.BLACK,
+    paddingVertical: 10,
+    alignSelf: 'flex-end'
+    
   },
 })

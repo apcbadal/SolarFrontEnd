@@ -11,6 +11,7 @@ import {
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
+import * as sizes from '../../constants/sizes'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -26,8 +27,8 @@ function LeadDetails({ navigation }) {
                 <Text style={styles.leadName}>{leadName}</Text>
                 <Text style={styles.leadAddress}>{address}</Text>
             </View>
-            <TouchableOpacity>
-                <Image style={styles.learnMore} source={images.default.learnMore}/>
+            <TouchableOpacity onPress={()=> navigation.navigate('Lead')}>
+                <Image  style={styles.learnMore} source={images.default.learnMore}/>
             </TouchableOpacity>
         </View>
     </View>
@@ -45,23 +46,26 @@ const styles = StyleSheet.create({
     leadContainer: {
       flexDirection: 'row',
       width: '100%',
-      height: '20%',
+      height: '25%',
       borderBottomWidth: 1,
       borderBottomColor: colors.GREY,
       alignItems: 'center',
       justifyContent: 'center'
     },
     leadName: {
-        fontSize: 20,
+        fontSize: sizes.LEAD_NAME,
         fontFamily: fonts.default.Poppins,
         fontWeight: '600',
-        paddingTop: 10,
-        paddingBottom: 5,
+        paddingTop: 5,
+        paddingBottom: 2,
         paddingLeft: 8
     },
     leadAddress: {
         paddingLeft: 8,
-        maxWidth: '80%'
+        paddingBottom: 5,
+        maxWidth: '90%',
+        fontSize: sizes.LEAD_ADDRESS,
+        fontFamily: fonts.Poppins
     },
     learnMore: {
         width: 30,

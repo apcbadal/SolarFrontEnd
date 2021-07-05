@@ -15,6 +15,7 @@ import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import sizes from '../../constants/sizes'
 
 function SetPassword() {
   const backIcon = (
@@ -64,6 +65,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 25,
+    backgroundColor: colors.WHITE
   },
 
   headerContainer: {
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 50,
+    height: sizes.BTN_HEIGHT,
   },
 
   sendEmailFont: {

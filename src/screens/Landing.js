@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native'
 import * as colors from '../../constants/color'
 import * as fonts from '../../constants/font'
+import * as sizes from '../../constants/sizes'
 
 const Landing = ({ navigation }) => {
   return (
@@ -39,63 +40,67 @@ const Landing = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 35,
-    backgroundColor: colors.WHITE,
+    backgroundColor: colors.WHITE  
   },
   heading: {
-    fontSize: 33,
+    fontSize: 40,
     fontFamily: fonts.Oswald,
     fontWeight: '300',
-    lineHeight: 35,
+    lineHeight: 45,
     color: colors.PRIMARY_RED,
     paddingTop: 5,
   },
   headingContainer: {
-    width: '100%',
-    height: '25%',
+    // width: '100%',
+    // height: '25%',
+    // flex: 0.3,
     justifyContent: 'center',
+    // backgroundColor: 'darkgrey'
   },
 
   containerSecond: {
-    width: '100%',
-    height: '25%',
+    // width: '100%',
+    // height: '25%',
     flexDirection: 'row',
     alignItems: 'center',
+    // backgroundColor: 'darkgrey'
+
   },
   heading2: {
     fontSize: 15,
   },
   dollar: {
-    fontSize: 80,
+    fontSize: sizes.DOLLAR_FONT,
     fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     color: colors.PRIMARY_RED,
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: sizes.SUBTITLE_FONT,
     fontFamily: fonts.Poppins,
     fontWeight: 'bold',
     marginHorizontal: 15,
     color: colors.PRIMARY_RED,
   },
   containerThree: {
-    width: '100%',
-    height: '20%',
+    // width: '100%',
+    // height: '20%',
   },
   heading3: {
     fontFamily: fonts.Poppins,
     fontWeight: '500',
     lineHeight: 28,
-    fontSize: 20,
-    top: 20,
+    fontSize: sizes.HEADING3,
+    // top: 20,
   },
   containerFour: {
-    flex: 0,
-    top: 10,
-    justifyContent: 'center',
+    // flex: 0,
+    paddingVertical: 50,
+    // justifyContent: '',
+    // backgroundColor: 'grey'
   },
 
   registerBtn: {
@@ -103,13 +108,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '20%',
+    height: sizes.BTN_HEIGHT,
   },
   loginBtn: {
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '20%',
+    height: sizes.BTN_HEIGHT,
     borderColor: colors.PRIMARY_RED,
     borderWidth: 2,
     color: colors.PRIMARY_RED,
@@ -119,7 +124,7 @@ const styles = StyleSheet.create({
   loginFont: {
     fontFamily: fonts.Poppins,
     fontWeight: '700',
-    fontSize: 15,
+    fontSize: sizes.LABEL_FONT,
     color: colors.BLACK,
     textTransform: 'uppercase',
   },
@@ -127,17 +132,17 @@ const styles = StyleSheet.create({
   registerFont: {
     fontFamily: fonts.Poppins,
     fontWeight: '700',
-    fontSize: 15,
+    fontSize: sizes.LABEL_FONT,
     color: colors.WHITE,
     textTransform: 'uppercase',
   },
   skipForNow: {
     fontFamily: fonts.Poppins,
     fontWeight: '700',
-    fontSize: 15,
+    fontSize: sizes.LABEL_FONT,
     color: colors.BLACK,
     alignSelf: 'center',
-    paddingTop: 10,
+    // marginTop: 5
   },
 })
 
