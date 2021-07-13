@@ -14,8 +14,9 @@ import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import sizes from '../../constants/sizes'
 
-function ResetPassword() {
+function ResetPassword({navigation}) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -23,7 +24,7 @@ function ResetPassword() {
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity style={styles.backBlock}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBlock}>
           {backIcon}
           <Text style={styles.back}>Back</Text>
         </TouchableOpacity>
@@ -46,7 +47,7 @@ function ResetPassword() {
         <TouchableOpacity style={styles.sendBtn}>
           <Text style={styles.sendEmailFont}>Send Email</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
           <Text style={styles.newUser}>New user? Register</Text>
         </TouchableOpacity>
       </View>
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     height: '100%',
     paddingHorizontal: 20,
     paddingVertical: 25,
+    backgroundColor: colors.WHITE
   },
 
   headerContainer: {
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 50,
+    height: sizes.BTN_HEIGHT,
   },
 
   sendEmailFont: {

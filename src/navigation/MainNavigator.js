@@ -18,6 +18,7 @@ import Splash from '../screens/splash'
 import LeadDetails from '../screens/LeadDetails'
 
 import * as images from '../../constants/images'
+import Lead from '../screens/Lead'
 
 class NavigationDrawerStructure extends Component {
   toggleDrawer = () => {
@@ -42,14 +43,15 @@ class NavigationDrawerStructure extends Component {
 const FirstActivity_StackNavigator = createStackNavigator({
   Home: {
     screen: Landing,
-    navigationOptions: ({ navigation }) => ({
-      headerRight: <Text>Solar </Text>, //will be change later, this is main header of application
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />, // drawer icon will appear
-      headerStyle: {
-        backgroundColor: '#fff',
-      },
-      headerTintColor: '#fff',
-    }),
+    navigationOptions: {headerShown: false }
+    // ({ navigation }) => ({
+    //   headerRight: <Text>Solar </Text>, //will be change later, this is main header of application
+    //   headerLeft: <NavigationDrawerStructure navigationProps={navigation} />, // drawer icon will appear
+    //   headerStyle: {
+    //     backgroundColor: '#fff',
+    //   },
+    //   headerTintColor: '#fff',
+    // }),
   },
   Location: {
     screen: Location,
@@ -95,6 +97,14 @@ const FirstActivity_StackNavigator = createStackNavigator({
     screen: PaymentSuccessful,
     navigationOptions: { headerShown: false },
   },
+  Lead: {
+    screen: Lead,
+    
+  },
+  ResetPassword: {
+    screen: ResetPassword,
+    navigationOptions: { headerShown: false },
+  }
   //add more in stack here
 })
 const Drawer = createDrawerNavigator(

@@ -13,6 +13,7 @@ import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import sizes from '../../constants/sizes'
 
 function Register({ navigation }) {
   const userIcon = <Icon style={styles.userIcon} name="user" size={25} color={colors.GREY} solid />
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 50,
+    height: sizes.BTN_HEIGHT,
   },
 
   registerFont: {

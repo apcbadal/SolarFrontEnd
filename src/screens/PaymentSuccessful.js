@@ -17,6 +17,7 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
+import sizes from '../../constants/sizes'
 
 function PaymentSuccessful({ navigation }) {
   const backIcon = (
@@ -37,7 +38,7 @@ function PaymentSuccessful({ navigation }) {
         <Text style={styles.subtitle}>Payment Successful</Text>
       </View>
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.buyBtn} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.loginAgain} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.loginAgain}>Login Again</Text>
         </TouchableOpacity>
       </View>
@@ -117,12 +118,12 @@ const styles = StyleSheet.create({
     aspectRatio: 7 / 3,
   },
 
-  buyBtn: {
+  loginAgain: {
     backgroundColor: colors.PRIMARY_RED,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: '40%',
+    height: sizes.BTN_HEIGHT,
   },
 
   loginAgain: {

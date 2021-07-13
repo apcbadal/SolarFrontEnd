@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Image, Text, StyleSheet } from 'react-native'
+import color from '../../constants/color'
 import * as images from '../../constants/images'
 
 const Splash = () => {
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     justifyContent: 'center',
+    backgroundColor: color.WHITE
   },
 
   solarLogo: {

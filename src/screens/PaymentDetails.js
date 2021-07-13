@@ -14,6 +14,7 @@ import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import sizes from '../../constants/sizes'
 
 function PaymentDetails({ navigation }) {
   const backIcon = (
@@ -74,8 +75,7 @@ export default PaymentDetails
 
 const styles = StyleSheet.create({
   mainContainer: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 25,
   },
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    height: 50,
+    height: sizes.BTN_HEIGHT,
   },
 
   sendEmailFont: {
