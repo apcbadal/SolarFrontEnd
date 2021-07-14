@@ -6,6 +6,7 @@ import rootReducer from './src/redux/reducers'
 import { createStore, applyMiddleware } from 'redux'
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
+
 const App = () => {
   return (
     <Provider store={store}>
