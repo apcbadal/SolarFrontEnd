@@ -1,11 +1,11 @@
 import  firebase from 'firebase';
 // Optionally import the services that you want to use
-import "firebase/auth";
-import "firebase/database";
+
 //import "firebase/firestore";
 //import "firebase/functions";
 //import "firebase/storage";
-
+import auth from '@react-native-firebase/auth'
+import database from '@react-native-firebase/database'
 // Initialize Firebase
 const firebaseConfig = {
   apiKey: 'AIzaSyDOU8BBpruCfkM8RDrfObLcPkL0Dt4lNCM',

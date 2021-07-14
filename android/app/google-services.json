@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "378917616064",
+    "firebase_url": "https://solar-8ebc6-default-rtdb.firebaseio.com",
+    "project_id": "solar-8ebc6",
+    "storage_bucket": "solar-8ebc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378917616064:android:cea75b9550d98f964ef025",
+        "android_client_info": {
+          "package_name": "com.gomediashark.solar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378917616064-l2ejis6ib0i1nmks9db3d2p3h8ie0cvs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOU8BBpruCfkM8RDrfObLcPkL0Dt4lNCM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378917616064-l2ejis6ib0i1nmks9db3d2p3h8ie0cvs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
