@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  
 } from 'react-native'
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
@@ -15,8 +16,8 @@ import * as fonts from '../../constants/font'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
 import auth from '@react-native-firebase/auth'
-import database from '@react-native-firebase/database'
-
+import firestore from '@react-native-firebase/firestore'
+import Snackbar from 'react-native-snackbar';
 
 
 function Register({ navigation }) {
@@ -28,41 +29,95 @@ function Register({ navigation }) {
   const [username, setUsername] = useState('')
   const [contactNum, setContactNum] = useState('')
   const [companyName, setCompanyName] = useState('')
+  const [userCreated, setUserCreated] = useState(false)
 
 
 
   const saveDataToDB = () => {
-  database().ref('/users')
-    .set({
-      username: username,
-      companyname: companyName
-    })
-    .then(() => console.log('data set success'))
-    .catch((err) => console.log(err))
+  firestore()
+  .collection('Users').doc(email)
+  .set({
+    username: username,
+    email: email,
+    companyname: companyName
+  })
+  .then(() => 
+  console.log('data set success')
+  
+  )
+  .catch((err) => console.log(err))
   }
 
 
   const registerUser = () => {
-   auth().createUserWithEmailAndPassword(email, password)
+    if (!email || !password || !companyName || !username) {
+      Snackbar.show({
+        text: 'Please fill all details',
+        textColor: 'white',
+        backgroundColor: 'red'
+      })
+    }else{
+
+    console.log('calling below func')
+    auth().createUserWithEmailAndPassword(email, password)
     .then(() => {
       console.log('User account created & signed in!');
+      setUserCreated(true)
 
     })
+    
     .then(() => saveDataToDB())
-    .catch(error => {
-      if (error.code === 'auth/email-already-in-use') {
-        console.log('That email address is already in use!');
-      }
-  
-      if (error.code === 'auth/invalid-email') {
-        console.log('That email address is invalid!');
-      }
-  
-      console.error(error);
+    .finally(()=> {
 
-    });
-    navigation.navigate('Location')
+      Snackbar.show({
+        text: 'User Created',
+        textColor: colors.WHITE,
+        backgroundColor: colors.PRIMARY_RED,
+        duration: Snackbar.LENGTH_SHORT,
+      })
+      navigation.navigate('Location', {
+        docID: email
+      })
+    })
+    .catch((error) => {
 
+
+      console.log(error)
+      var errorCode = error.code;
+      if (errorCode === 'auth/email-already-in-use') {
+        console.log('Email Already Exist')
+        Snackbar.show({
+          text: 'Email Already Exist',
+          textColor: 'white',
+          backgroundColor: 'red'
+        })
+      }
+      else if (errorCode === 'auth/too-many-requests'){
+        Snackbar.show({
+          text: 'Please try after some time or change your password',
+          textColor: 'white',
+          backgroundColor: 'red'
+        })
+      } else if (errorCode === 'auth/weak-password') {
+        Snackbar.show({
+          text: 'Password should be at least 6 characters',
+          textColor: 'white',
+          backgroundColor: 'red'
+        })
+      
+      }else{
+       
+      }
+    })
+    
+      // console.log('calledfunction')
+      
+      // navigation.navigate('Location', {
+      //   screen: 'Location',
+      //   params: { docId: email },
+      // });
+    }
+    
   }
 
 
