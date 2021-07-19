@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -17,9 +17,51 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
 
 function PaymentDetails({ navigation }) {
+  const [nameOnCard, setNameOnCard] = useState('')
+  const [cardNum, setCardNum] = useState('')
+  const [expiryDate, setExpiryDate] = useState('')
+  const [cvv, setCvv] = useState('')  
+  const [billingDetails, setBillingDetails] = useState('')
+  
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
+  
+  // function 
+
+
+  const saveDataToDB = () => {
+    if (!nameOnCard || !cardNum || !expiryDate || !cvv || !billingDetails) {
+      Snackbar.show({
+        text: 'Please fill all details',
+        textColor: 'white',
+        backgroundColor: 'red'
+      })
+    }else {
+    firestore()
+    .collection('Users').doc('aadi@gmail.com')
+    .set({
+      nameoncard: nameoncard,
+      cardNumber: cardNum,
+      expirydate: expiryDate,
+      CVV: cvv,
+      billingDetails: billingDetails
+
+    })
+    .then(() => 
+    console.log('Payment details saved set success')
+    
+    )
+    .catch((err) => console.log(err))
+    .finally(()=> {
+      navigation.navigate('PrimeMember')
+    })
+      }
+    }
+
+
+
+
 
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
@@ -39,19 +81,34 @@ function PaymentDetails({ navigation }) {
       <View style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>Name on Card</Text>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput 
+            style={styles.input}
+            value={nameOnCard}
+            onChangeText={(text) => setNameOnCard(text)}>
+
+            </TextInput>
         </View>
         <View>
           <Text style={styles.text}>Card Number</Text>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput
+            keyboardType={'number-pad'} 
+            style={styles.input}
+            value={cardNum}
+            onChangeText={(text) => setCardNum(text)}></TextInput>
         </View>
         <View style={{ flexDirection: 'row' }}>
           <Text style={styles.expiryDateText}>Expiry Date</Text>
           <Text style={styles.text}>CVV</Text>
         </View>
         <View style={styles.expiryRowContainer}>
-          <TextInput style={styles.expiryDate}></TextInput>
-          <TextInput style={styles.cvv}></TextInput>
+          <TextInput 
+            style={styles.expiryDate}
+            value={expiryDate}
+            onChangeText={(text) => setExpiryDate(text)}></TextInput>
+          <TextInput 
+            style={styles.cvv}
+            value={cvv}
+            onChangeText={(text) => setCvv(text)}></TextInput>
         </View>
 
         <View>
@@ -61,7 +118,7 @@ function PaymentDetails({ navigation }) {
       </View>
 
       <View style={styles.containerFour}>
-        <TouchableOpacity style={styles.sendBtn} onPress={() => navigation.navigate('PrimeMember')}>
+        <TouchableOpacity style={styles.sendBtn} onPress={() => saveDataToDB()}>
           <Text style={styles.sendEmailFont}>Save Details</Text>
         </TouchableOpacity>
         <TouchableOpacity>

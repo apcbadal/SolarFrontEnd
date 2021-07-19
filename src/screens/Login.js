@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -17,9 +17,61 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
 
 function Login({ navigation }) {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
+
+  const LogIn = () => {
+   
+    if (!email || !password) {
+      Snackbar.show({
+        text: 'Please fill all details',
+        textColor: 'white',
+        backgroundColor: color.BLACK
+      })
+    } else {
+      
+      auth().signInWithEmailAndPassword(email, password)
+      
+      
+      .catch((error) => {
+        var errorCode = error.code;
+       
+        if (errorCode === 'auth/user-not-found') {
+          console.log('invalid user')
+          Snackbar.show({
+                  text: 'Invalid User',
+                  textColor: 'white',
+                  backgroundColor: color.LIGHT_PURP
+                })
+        }
+        else if (errorCode === 'auth/wrong-password') {
+          console.log('Wrong Password')
+          Snackbar.show({
+            text: 'Wrong Password',
+            textColor: 'white',
+            backgroundColor: 'red'
+          })
+        }
+        else if (errorCode === 'auth/too-many-requests'){
+          Snackbar.show({
+            text: 'Please try after some time or change your password',
+            textColor: 'white',
+            backgroundColor: 'red'
+          })
+        } else{
+          return null
+        }
+      })
+     
+    } 
+        
+  }
+
+
+
 
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
@@ -39,11 +91,17 @@ function Login({ navigation }) {
       <View style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>E-mail</Text>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput 
+            style={styles.input}
+            value={email}
+            onChangeText={(text) => setEmail(text)}></TextInput>
         </View>
         <View>
           <Text style={styles.text}>Password</Text>
-          <TextInput style={styles.input}></TextInput>          
+          <TextInput 
+            style={styles.input}
+            value={password}
+            onChangeText={(text) => setPassword(text)}></TextInput>          
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
           <Text style={styles.forgotPass}>Forgot Password ?</Text>
