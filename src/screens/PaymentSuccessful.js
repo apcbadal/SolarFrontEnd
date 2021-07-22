@@ -118,13 +118,6 @@ const styles = StyleSheet.create({
     aspectRatio: 7 / 3,
   },
 
-  loginAgain: {
-    backgroundColor: colors.PRIMARY_RED,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    height: sizes.BTN_HEIGHT,
-  },
 
   loginAgain: {
     fontFamily: fonts.Poppins,

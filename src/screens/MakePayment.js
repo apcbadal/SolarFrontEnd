@@ -35,12 +35,19 @@ import firestore from "@react-native-firebase/firestore";
       currency: 'USD',
       description: payerName + ' is Paying for Solar Lead'
     }).
-    then(confirm =>
-      console.log(confirm),
-      saveToDB()
+    then((confirm )=>{
+        const isApprove=confirm.response.state;
+        if(isApprove==="approved"){
+          saveToDB()
+        }
+    }
     )
       .catch(error =>
-        console.log(error)
+        Snackbar.show({
+          text:"You cancelled the payment",
+          textColor:'white',
+          backgroundColor:'red'
+        })
       );
 
   }
