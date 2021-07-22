@@ -30,7 +30,7 @@ const Landing = ({ navigation }) => {
         <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate("PrimeMember")}>
           <Text style={styles.skipForNow}>Skip for Now</Text>
         </TouchableOpacity>
       </View>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 35,
-    backgroundColor: colors.WHITE  
+    backgroundColor: colors.WHITE
   },
   heading: {
     fontSize: 40,

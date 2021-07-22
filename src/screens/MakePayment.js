@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -15,8 +15,57 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
+import PayPal from "react-native-paypal-wrapper";
+import auth from "@react-native-firebase/auth";
+import Snackbar from "react-native-snackbar";
+import firestore from "@react-native-firebase/firestore";
 
-function MakePayment({ navigation }) {
+ function MakePayment({ navigation }) {
+  const [payerName,setPayerName]=useState(null)
+   const[email,setEmail]=useState(null)
+   useEffect(()=>{
+     const email=auth().currentUser.email
+      setEmail(email)
+   },[email])
+  const payUsingPayPal = async () => {
+
+    PayPal.initialize(PayPal.NO_NETWORK, "Adg5qqM4C6MzhZSkKt3hktnIW5DW8IwTDKB1DaMFWoGn5I7knG6Yq-IzG8MwDiAZ9U542N3fSZoYq9n6");
+    PayPal.pay({
+      price: '0.5',
+      currency: 'USD',
+      description: payerName + ' is Paying for Solar Lead'
+    }).
+    then(confirm =>
+      console.log(confirm),
+      saveToDB()
+    )
+      .catch(error =>
+        console.log(error)
+      );
+
+  }
+const saveToDB=()=>{
+    if(!payerName || !email){
+      Snackbar.show({
+        text: 'Please fill all details',
+        textColor: 'white',
+        backgroundColor: 'red'
+      })
+    }
+    else{
+      firestore().collection("Users").doc(email).update({
+        isPayment:true,
+        payment:"99 USD"
+      })
+        .then(() =>
+          console.log('Payment success')
+        )
+        .catch((err) => console.log(err))
+        .finally(()=> {
+          navigation.navigate('Lead')
+        })
+    }
+}
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -38,14 +87,18 @@ function MakePayment({ navigation }) {
 
       <View style={styles.inputContainer}>
         <View>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput style={styles.input}
+          placeholder="Your Name"
+          value={payerName}
+          onChangeText={text => setPayerName(text)}
+          />
         </View>
       </View>
 
       <View style={styles.containerFour}>
         <TouchableOpacity
           style={styles.makePayBtn}
-          onPress={() => navigation.navigate('PaymentSuccess')}
+          onPress={() => payUsingPayPal()}
         >
           <Text style={styles.makePaymentFont}>Make Payment</Text>
         </TouchableOpacity>

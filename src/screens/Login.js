@@ -15,6 +15,8 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
+import Snackbar from "react-native-snackbar";
+import auth from "@react-native-firebase/auth";
 
 function Login({ navigation }) {
   const [email, setEmail] = useState('')
@@ -24,7 +26,6 @@ function Login({ navigation }) {
   )
 
   const LogIn = () => {
-   
     if (!email || !password) {
       Snackbar.show({
         text: 'Please fill all details',
@@ -32,13 +33,11 @@ function Login({ navigation }) {
         backgroundColor: color.BLACK
       })
     } else {
-      
-      auth().signInWithEmailAndPassword(email, password)
-      
-      
+      auth().signInWithEmailAndPassword(email, password).then(()=>{
+        console.log("User signed in.")
+      })
       .catch((error) => {
-        var errorCode = error.code;
-       
+        const errorCode = error.code;
         if (errorCode === 'auth/user-not-found') {
           console.log('invalid user')
           Snackbar.show({
@@ -65,9 +64,12 @@ function Login({ navigation }) {
           return null
         }
       })
-     
-    } 
-        
+        .finally(()=>{
+          navigation.navigate("PrimeMember")
+        })
+
+    }
+
   }
 
 
@@ -91,17 +93,17 @@ function Login({ navigation }) {
       <View style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>E-mail</Text>
-          <TextInput 
-            style={styles.input}
-            value={email}
-            onChangeText={(text) => setEmail(text)}></TextInput>
+          <TextInput
+  style={styles.input}
+  value={email}
+  onChangeText={(text) => setEmail(text)}/>
         </View>
         <View>
           <Text style={styles.text}>Password</Text>
-          <TextInput 
-            style={styles.input}
-            value={password}
-            onChangeText={(text) => setPassword(text)}></TextInput>          
+          <TextInput
+  style={styles.input}
+  value={password}
+  onChangeText={(text) => setPassword(text)}/>
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
           <Text style={styles.forgotPass}>Forgot Password ?</Text>
@@ -111,7 +113,7 @@ function Login({ navigation }) {
       <View>
         <TouchableOpacity
           style={styles.loginBtn}
-          onPress={() => navigation.navigate('LeadDetails')}
+          onPress={() => LogIn()}
         >
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
@@ -251,6 +253,6 @@ const styles = StyleSheet.create({
     color: colors.BLACK,
     paddingVertical: 10,
     alignSelf: 'flex-end'
-    
+
   },
 })
