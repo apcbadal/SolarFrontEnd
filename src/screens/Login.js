@@ -111,6 +111,7 @@ function Login({ navigation }) {
         <View>
           <Text style={styles.text}>Password</Text>
           <TextInput
+            secureTextEntry={true}
   style={styles.input}
   value={password}
   onChangeText={(text) => setPassword(text)}/>
