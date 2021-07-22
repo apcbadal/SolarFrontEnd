@@ -8,7 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  
+
 } from 'react-native'
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
@@ -31,8 +31,6 @@ function Register({ navigation }) {
   const [companyName, setCompanyName] = useState('')
   const [userCreated, setUserCreated] = useState(false)
 
-
-
   const saveDataToDB = () => {
   firestore()
   .collection('Users').doc(email)
@@ -41,9 +39,9 @@ function Register({ navigation }) {
     email: email,
     companyname: companyName
   })
-  .then(() => 
+  .then(() =>
   console.log('data set success')
-  
+
   )
   .catch((err) => console.log(err))
   }
@@ -63,14 +61,11 @@ function Register({ navigation }) {
     .then(() => {
       console.log('User account created & signed in!');
       setUserCreated(true)
-
     })
-    
     .then(() => saveDataToDB())
     .finally(()=> {
-
       Snackbar.show({
-        text: 'User Created',
+        text: 'Registration Successfully.',
         textColor: colors.WHITE,
         backgroundColor: colors.PRIMARY_RED,
         duration: Snackbar.LENGTH_SHORT,
@@ -104,28 +99,28 @@ function Register({ navigation }) {
           textColor: 'white',
           backgroundColor: 'red'
         })
-      
+
       }else{
-       
+
       }
     })
-    
+
       // console.log('calledfunction')
-      
+
       // navigation.navigate('Location', {
       //   screen: 'Location',
       //   params: { docId: email },
       // });
     }
-    
+
   }
 
 
 
   return (
-    
+
     <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
-     
+
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
@@ -142,34 +137,34 @@ function Register({ navigation }) {
       <View style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>Username</Text>
-          <TextInput 
+          <TextInput
             value= {username}
             style={styles.input}
-            onChangeText= {(text)=> setUsername(text)}>     
+            onChangeText= {(text)=> setUsername(text)}>
           </TextInput>
         </View>
         <View>
           <Text style={styles.text}>E-mail</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={email}
-            onChangeText= {(text)=> setEmail(text)}  
+            onChangeText= {(text)=> setEmail(text)}
             >
             </TextInput>
         </View>
         <View>
           <Text style={styles.text}>Password</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={password}
-            onChangeText= {(text)=> setPassword(text)} 
-            secureTextEntry={true} 
+            onChangeText= {(text)=> setPassword(text)}
+            secureTextEntry={true}
             >
             </TextInput>
         </View>
         {/* <View>
           <Text style={styles.text}>Contact Number</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={contactNum}
             onChangeText= {(text)=> setContactNum(text)}  >
@@ -177,12 +172,12 @@ function Register({ navigation }) {
         </View> */}
         <View>
           <Text style={styles.text}>Company Name</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value= {companyName}
             style={styles.input}
-            onChangeText= {(text)=> setCompanyName(text)}>  
-            
+            onChangeText= {(text)=> setCompanyName(text)}>
+
             </TextInput>
         </View>
       </View>
@@ -192,13 +187,13 @@ function Register({ navigation }) {
           style={styles.registerBtn}
           onPress={() => registerUser()}
         >
-          <Text style={styles.registerFont}>Register</Text>   
+          <Text style={styles.registerFont}>Register</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.alreadyUser}>Already a user? Login</Text>
         </TouchableOpacity>
       </View>
-     
+
     </KeyboardAvoidingView>
   )
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -15,19 +15,26 @@ import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
+import Snackbar from "react-native-snackbar";
+import firestore from "@react-native-firebase/firestore";
+import auth from "@react-native-firebase/auth";
 
 function PaymentDetails({ navigation }) {
   const [nameOnCard, setNameOnCard] = useState('')
   const [cardNum, setCardNum] = useState('')
   const [expiryDate, setExpiryDate] = useState('')
-  const [cvv, setCvv] = useState('')  
+  const [cvv, setCvv] = useState('')
   const [billingDetails, setBillingDetails] = useState('')
-  
+  const [email,setEmail]=useState(null);
+  useEffect(()=>{
+    const email=auth().currentUser.email
+    setEmail(email)
+  },[email])
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
-  
-  // function 
+
+  // function
 
 
   const saveDataToDB = () => {
@@ -39,18 +46,18 @@ function PaymentDetails({ navigation }) {
       })
     }else {
     firestore()
-    .collection('Users').doc('aadi@gmail.com')
-    .set({
-      nameoncard: nameoncard,
+    .collection('Users').doc(email)
+    .update({
+      nameoncard: nameOnCard,
       cardNumber: cardNum,
       expirydate: expiryDate,
       CVV: cvv,
       billingDetails: billingDetails
 
     })
-    .then(() => 
+    .then(() =>
     console.log('Payment details saved set success')
-    
+
     )
     .catch((err) => console.log(err))
     .finally(()=> {
@@ -81,7 +88,7 @@ function PaymentDetails({ navigation }) {
       <View style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>Name on Card</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={nameOnCard}
             onChangeText={(text) => setNameOnCard(text)}>
@@ -91,29 +98,32 @@ function PaymentDetails({ navigation }) {
         <View>
           <Text style={styles.text}>Card Number</Text>
           <TextInput
-            keyboardType={'number-pad'} 
-            style={styles.input}
-            value={cardNum}
-            onChangeText={(text) => setCardNum(text)}></TextInput>
+  keyboardType={"number-pad"}
+  style={styles.input}
+  value={cardNum}
+  onChangeText={(text) => setCardNum(text)}/>
         </View>
         <View style={{ flexDirection: 'row' }}>
           <Text style={styles.expiryDateText}>Expiry Date</Text>
           <Text style={styles.text}>CVV</Text>
         </View>
         <View style={styles.expiryRowContainer}>
-          <TextInput 
-            style={styles.expiryDate}
-            value={expiryDate}
-            onChangeText={(text) => setExpiryDate(text)}></TextInput>
-          <TextInput 
-            style={styles.cvv}
-            value={cvv}
-            onChangeText={(text) => setCvv(text)}></TextInput>
+          <TextInput
+  style={styles.expiryDate}
+  value={expiryDate}
+  onChangeText={(text) => setExpiryDate(text)}/>
+          <TextInput
+  style={styles.cvv}
+  value={cvv}
+  onChangeText={(text) => setCvv(text)}/>
         </View>
 
         <View>
           <Text style={styles.text}>Billing Details</Text>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput style={styles.input}
+                     value={billingDetails}
+                     onChangeText={(text) => setBillingDetails(text)}
+          />
         </View>
       </View>
 

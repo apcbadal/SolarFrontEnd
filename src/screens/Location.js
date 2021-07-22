@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -19,18 +19,23 @@ import LocationIcon from 'react-native-vector-icons/Entypo'
 import sizes from '../../constants/sizes'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
+import Snackbar from "react-native-snackbar";
+import FirebaseConfig from "../../configuration/config";
 
 function Location({ route, navigation }) {
-  // const {docId} = route.params;
-  // const {docId} = route.params;
-  
+  const[email,setEmail]=useState(null)
+  useEffect(()=>{
+    const email =auth().currentUser.email
+    setEmail(email)
+  },[email])
+
   const [address1, setAddress1] = useState('')
   const [address2, setAddress2] = useState('')
   const [city, setCity] = useState('')
   const [stateName, setStateName] = useState('')
   const [zipcode, setZipcode] = useState('')
-  
-  // console.log(`DOCID: ${JSON.stringify(docId)}`) 
+
+  // console.log(`DOCID: ${JSON.stringify(docId)}`)
   const locatIcon = (
     <LocationIcon style={styles.userIcon} name="location-pin" size={25} color={colors.GREY} />
   )
@@ -38,9 +43,6 @@ function Location({ route, navigation }) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
-    
-    // function
-
 
     const saveDataToDB = () => {
       if (!address1 || !city || !stateName || !zipcode) {
@@ -51,8 +53,8 @@ function Location({ route, navigation }) {
         })
       }else {
       firestore()
-      .collection('Users').doc('aadi@gmail.com')
-      .set({
+      .collection('Users').doc(email)
+      .update({
         addressLine1: address1,
         addresLine2: address2,
         cityName: city,
@@ -60,15 +62,15 @@ function Location({ route, navigation }) {
         zipcode: zipcode
 
       })
-      .then(() => 
+      .then(() =>
       console.log('Location data set success')
-      
+
       )
       .catch((err) => console.log(err))
       .finally(()=> {
         navigation.navigate('PaymentDetail')
       })
-      
+
       }
     }
 
@@ -95,7 +97,7 @@ function Location({ route, navigation }) {
       <ScrollView style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>Address Line 1</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={address1}
             onChangeText={(text)=> setAddress1(text)}>
@@ -103,36 +105,36 @@ function Location({ route, navigation }) {
         </View>
         <View>
           <Text style={styles.text}>Address Line 2</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={address2}
             onChangeText={(text)=> setAddress2(text)}></TextInput>
         </View>
         <View>
           <Text style={styles.text}>City</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={city}
             onChangeText={(text)=> setCity(text)}></TextInput>
         </View>
         <View>
           <Text style={styles.text}>State</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={stateName}
             onChangeText={(text)=> setStateName(text)}></TextInput>
         </View>
         <View>
           <Text style={styles.text}>Zipcode</Text>
-          <TextInput 
+          <TextInput
             style={styles.input}
             value={zipcode}
             onChangeText={(text)=> setZipcode(text)}></TextInput>
         </View>
-        
+
       </ScrollView>
 
-     
+
         <View style={{ paddingTop: 10 }}>
         <TouchableOpacity
             style={styles.locationBtn}
@@ -144,7 +146,7 @@ function Location({ route, navigation }) {
             <Text style={styles.skip}>Skip for now</Text>
           </TouchableOpacity>
         </View>
-      
+
     </KeyboardAvoidingView>
   )
 }
