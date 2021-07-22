@@ -69,7 +69,7 @@ const saveToDB=()=>{
         )
         .catch((err) => console.log(err))
         .finally(()=> {
-          navigation.navigate('Lead')
+          navigation.navigate('LeadDetails')
         })
     }
 }

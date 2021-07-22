@@ -17,10 +17,13 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
 import Snackbar from "react-native-snackbar";
 import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
+import color from "../../constants/color";
 
 function Login({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [user,setUser]=useState(null)
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -35,6 +38,16 @@ function Login({ navigation }) {
     } else {
       auth().signInWithEmailAndPassword(email, password).then(()=>{
         console.log("User signed in.")
+        firestore().collection("Users").doc(email).get().then((response)=>
+        {
+          setUser(response)
+        })
+        if(user.isPayment){
+              navigation.navigate("LeadDetails")
+        }
+        else{
+            navigation.navigate("PrimeMember")
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -64,9 +77,6 @@ function Login({ navigation }) {
           return null
         }
       })
-        .finally(()=>{
-          navigation.navigate("PrimeMember")
-        })
 
     }
 
