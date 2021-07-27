@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView
 } from 'react-native'
 
 import * as colors from '../../constants/color'
@@ -80,7 +81,8 @@ function Location({ route, navigation }) {
 
 
   return (
-    <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
+    <KeyboardAvoidingView  behavior="position">
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
@@ -93,7 +95,6 @@ function Location({ route, navigation }) {
         {locatIcon}
         <Text style={styles.locationTxt}>Location</Text>
       </View>
-
       <ScrollView style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>Address Line 1</Text>
@@ -124,16 +125,17 @@ function Location({ route, navigation }) {
             value={stateName}
             onChangeText={(text)=> setStateName(text)}></TextInput>
         </View>
-        <View>
+        <View style={{paddingBottom: 20}}>
           <Text style={styles.text}>Zipcode</Text>
           <TextInput
             style={styles.input}
             value={zipcode}
             onChangeText={(text)=> setZipcode(text)}></TextInput>
         </View>
+        
 
       </ScrollView>
-
+      </KeyboardAvoidingView>
 
         <View style={{ paddingTop: 10 }}>
         <TouchableOpacity
@@ -147,7 +149,7 @@ function Location({ route, navigation }) {
           </TouchableOpacity>
         </View>
 
-    </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
 
@@ -211,7 +213,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'column',
     width: '100%',
-    aspectRatio: 4/5,
+    aspectRatio: 4/5.5,
     alignSelf: 'center',
   },
 

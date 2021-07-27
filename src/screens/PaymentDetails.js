@@ -7,6 +7,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native'
 
 import * as colors from '../../constants/color'
@@ -71,7 +72,8 @@ function PaymentDetails({ navigation }) {
 
 
   return (
-    <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
+    <SafeAreaView  style={styles.mainContainer}>
+      <KeyboardAvoidingView behavior="position">
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
@@ -126,7 +128,7 @@ function PaymentDetails({ navigation }) {
           />
         </View>
       </View>
-
+      </KeyboardAvoidingView>
       <View style={styles.containerFour}>
         <TouchableOpacity style={styles.sendBtn} onPress={() => saveDataToDB()}>
           <Text style={styles.sendEmailFont}>Save Details</Text>
@@ -135,7 +137,7 @@ function PaymentDetails({ navigation }) {
           <Text style={styles.skipForNow}>Skip for Now</Text>
         </TouchableOpacity>
       </View>
-    </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
 export default PaymentDetails
