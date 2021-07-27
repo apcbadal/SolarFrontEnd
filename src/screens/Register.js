@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView
 
 } from 'react-native'
 import * as colors from '../../constants/color'
@@ -119,8 +120,9 @@ function Register({ navigation }) {
 
   return (
 
-    <KeyboardAvoidingView behavior="position" style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
 
+    <KeyboardAvoidingView behavior="position" >
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
@@ -128,13 +130,12 @@ function Register({ navigation }) {
         </TouchableOpacity>
         <Image style={styles.solarLogo} source={images.default.solarLogo} />
       </View>
-
       <View style={styles.registerBlock}>
         {userIcon}
         <Text style={styles.registerTxt}>Register</Text>
       </View>
 
-      <View style={styles.inputContainer}>
+      <View   style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>Username</Text>
           <TextInput
@@ -152,7 +153,7 @@ function Register({ navigation }) {
             >
             </TextInput>
         </View>
-        <View>
+        <View behavior='padding'>
           <Text style={styles.text}>Password</Text>
           <TextInput
             style={styles.input}
@@ -177,11 +178,11 @@ function Register({ navigation }) {
             value= {companyName}
             style={styles.input}
             onChangeText= {(text)=> setCompanyName(text)}>
-
-            </TextInput>
+          </TextInput>
         </View>
-      </View>
 
+      </View>
+      </KeyboardAvoidingView>
       <View>
         <TouchableOpacity
           style={styles.registerBtn}
@@ -194,7 +195,7 @@ function Register({ navigation }) {
         </TouchableOpacity>
       </View>
 
-    </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
 
@@ -202,8 +203,7 @@ export default Register
 
 const styles = StyleSheet.create({
   mainContainer: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 25,
     backgroundColor: colors.WHITE,
@@ -214,6 +214,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    
   },
 
   solarLogo: {
@@ -283,6 +284,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.BLACK,
     paddingVertical: 10,
+    
+    
   },
 
   containerFour: {
@@ -298,6 +301,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     height: sizes.BTN_HEIGHT,
+    marginTop: 20,
   },
 
   registerFont: {
