@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -6,31 +6,43 @@ import {
   Image,
   View,
   TextInput,
-  TouchableOpacity,
-} from 'react-native'
+  TouchableOpacity, FlatList,
+} from "react-native";
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
 import * as sizes from '../../constants/sizes'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
+import firestore from "@react-native-firebase/firestore";
 
 function LeadDetails({ navigation }) {
+  const [data,setData]=useState([])
+  useEffect(async () => {
+    const lead = await firestore().collection('webContactFormData-HP').get();
+    setData(lead._docs)
 
- let leadName = 'Terrance Brown';
- let address = '180 Central Ave St. Petersburg FL 33701 United States'
+  },[data])
 
+  const dataTorender=(data)=>{
+    return(
+      <View style={styles.leadContainer}>
+        <View style={{width: '85%'}}>
+          <Text style={styles.leadName}>{data.item._data.firstName}{data.item._data.lastName}</Text>
+          <Text style={styles.leadAddress}>{data.item._data.workEmail}</Text>
+          <Text style={styles.leadAddress}>{data.item._data.workCategory}</Text>
+        </View>
+        <TouchableOpacity onPress={()=> navigation.navigate('Lead',{data})}>
+          <Image  style={styles.learnMore} source={images.default.learnMore}/>
+        </TouchableOpacity>
+      </View>
+    )
+  }
   return (
     <View style={styles.mainContainer}>
-        <View style={styles.leadContainer}>
-            <View style={{width: '85%'}}>
-                <Text style={styles.leadName}>{leadName}</Text>
-                <Text style={styles.leadAddress}>{address}</Text>
-            </View>
-            <TouchableOpacity onPress={()=> navigation.navigate('Lead')}>
-                <Image  style={styles.learnMore} source={images.default.learnMore}/>
-            </TouchableOpacity>
-        </View>
+      <FlatList
+        data={data}
+      renderItem={({ item }) => dataTorender({item})}/>
     </View>
   )
 }
