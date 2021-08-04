@@ -31,7 +31,7 @@ const Landing = ({ navigation }) => {
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>navigation.navigate("PrimeMember")}>
-          <Text style={styles.skipForNow}>Skip for Now</Text>
+
         </TouchableOpacity>
       </View>
     </SafeAreaView>

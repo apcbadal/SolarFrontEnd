@@ -77,9 +77,8 @@ function Register({ navigation }) {
     })
     .catch((error) => {
 
-
       console.log(error)
-      var errorCode = error.code;
+      const errorCode = error.code;
       if (errorCode === 'auth/email-already-in-use') {
         console.log('Email Already Exist')
         Snackbar.show({
@@ -214,7 +213,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    
+
   },
 
   solarLogo: {
@@ -284,8 +283,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.BLACK,
     paddingVertical: 10,
-    
-    
+
+
   },
 
   containerFour: {

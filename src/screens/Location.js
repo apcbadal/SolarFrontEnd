@@ -27,7 +27,10 @@ function Location({ route, navigation }) {
   const[email,setEmail]=useState(null)
   useEffect(()=>{
     const email =auth().currentUser.email
-    setEmail(email)
+    if(email!==null){
+      setEmail(email)
+    }
+
   },[email])
 
   const [address1, setAddress1] = useState('')
@@ -65,20 +68,14 @@ function Location({ route, navigation }) {
       })
       .then(() =>
       console.log('Location data set success')
-
       )
       .catch((err) => console.log(err))
       .finally(()=> {
-        navigation.navigate('PaymentDetail')
+        navigation.navigate('PrimeMember')
       })
 
       }
     }
-
-
-
-
-
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -107,30 +104,30 @@ function Location({ route, navigation }) {
         <View>
           <Text style={styles.text}>Address Line 2</Text>
           <TextInput
-            style={styles.input}
-            value={address2}
-            onChangeText={(text)=> setAddress2(text)}></TextInput>
+  style={styles.input}
+  value={address2}
+  onChangeText={(text) => setAddress2(text)}/>
         </View>
         <View>
           <Text style={styles.text}>City</Text>
           <TextInput
-            style={styles.input}
-            value={city}
-            onChangeText={(text)=> setCity(text)}></TextInput>
+  style={styles.input}
+  value={city}
+  onChangeText={(text) => setCity(text)}/>
         </View>
         <View>
           <Text style={styles.text}>State</Text>
           <TextInput
-            style={styles.input}
-            value={stateName}
-            onChangeText={(text)=> setStateName(text)}></TextInput>
+  style={styles.input}
+  value={stateName}
+  onChangeText={(text) => setStateName(text)}/>
         </View>
         <View style={{paddingBottom: 20}}>
           <Text style={styles.text}>Zipcode</Text>
           <TextInput
-            style={styles.input}
-            value={zipcode}
-            onChangeText={(text)=> setZipcode(text)}></TextInput>
+  style={styles.input}
+  value={zipcode}
+  onChangeText={(text) => setZipcode(text)}/>
         </View>
         
 
@@ -144,7 +141,7 @@ function Location({ route, navigation }) {
           >
             <Text style={styles.locationFont}>Set Location</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('LeadDetails')}>
+          <TouchableOpacity onPress={() => navigation.navigate('PrimeMember')}>
             <Text style={styles.skip}>Skip for now</Text>
           </TouchableOpacity>
         </View>

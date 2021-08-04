@@ -42,7 +42,7 @@ function Login({ navigation }) {
         {
           setUser(response)
         })
-        if(user.isPayment){
+        if(user._data.isPayment===true){
               navigation.navigate("LeadDetails")
         }
         else{
@@ -56,7 +56,7 @@ function Login({ navigation }) {
           Snackbar.show({
                   text: 'Invalid User',
                   textColor: 'white',
-                  backgroundColor: color.LIGHT_PURP
+                  backgroundColor: 'red'
                 })
         }
         else if (errorCode === 'auth/wrong-password') {
@@ -81,8 +81,6 @@ function Login({ navigation }) {
     }
 
   }
-
-
 
 
   return (

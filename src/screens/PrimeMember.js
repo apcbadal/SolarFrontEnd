@@ -48,9 +48,9 @@ function PrimeMember({ navigation }) {
         <TouchableOpacity style={styles.buyBtn} onPress={() => navigation.navigate('Payment')}>
           <Text style={styles.buyFont}>Buy</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('LeadDetails')}>
+        {/*<TouchableOpacity onPress={() => navigation.navigate('DummyLeadDetails')}>
           <Text style={styles.skipForNow}>Skip for Now</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
       </View>
     </SafeAreaView>
   )
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 25,
     backgroundColor: colors.WHITE
-    
+
   },
 
   headerContainer: {

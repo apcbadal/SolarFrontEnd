@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 
@@ -12,8 +12,8 @@ import Phone from 'react-native-vector-icons/FontAwesome'
 import Mail from 'react-native-vector-icons/Entypo'
 import sizes from '../../constants/sizes'
 
-
-function Lead() {
+function Lead({navigation,route}) {
+    const data =navigation.getParam("data")
     const user = (
         <User name="user" size={30} color='darkgrey' />
       )
@@ -26,22 +26,23 @@ function Lead() {
     const phone = (
         <Phone name="phone" size={30} color='darkgrey' />
       )
-    let name = 'Terrance Brown'
-    let company = 'Florida Solar Panels'
-    let email = 'imadityadi@gmail.com'
-    let mobNum = '9239239232'
+    let firstName = data.item._data.firstName
+    let lastName = data.item._data.lastName
+    let company = data.item._data.companyName
+    let email = data.item._data.workEmail
+    let workCategory = data.item._data.workCategory
 
 
 
     return (
         <View style={styles.mainContainer} >
-            
+
             <View style={styles.leadDetailContainer}>
                 <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
                         {user}
                     <View style={styles.subNameContainer}>
                         <Text style={styles.label}>Name</Text>
-                        <Text style={styles.value}>{name}</Text>
+                        <Text style={styles.value}>{firstName + lastName}</Text>
                     </View>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
@@ -61,8 +62,8 @@ function Lead() {
                 <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
                     {phone}
                     <View style={styles.subNameContainer}>
-                        <Text style={styles.label}>Phone</Text>
-                        <Text style={styles.value}>{mobNum}</Text>
+                        <Text style={styles.label}>Work category</Text>
+                        <Text style={styles.value}>{workCategory}</Text>
                     </View>
                 </View>
 
@@ -90,15 +91,15 @@ const styles = StyleSheet.create({
        flex: 1,
        paddingHorizontal: 30,
        paddingVertical: 35,
-       backgroundColor: colors.WHITE,       
+       backgroundColor: colors.WHITE,
     },
 
-   
+
     subNameContainer: {
         paddingHorizontal: 15,
         paddingTop: 30
-        
-        
+
+
     },
 
     leadDetailContainer:{},
@@ -114,15 +115,15 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: 'bold',
         marginTop: 2,
-        
-        
+
+
     },
     btnContainer: {
         flex: 5,
         flexDirection: 'row',
         justifyContent: 'center',
         paddingTop: 40
-        
+
     },
     callNowBtn: {
         width: '50%',
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginHorizontal: 8
-        
+
     },
     callNowText: {
         fontSize: sizes.LABEL_FONT,
@@ -156,6 +157,6 @@ const styles = StyleSheet.create({
         color: colors.PRIMARY_RED
 
     }
-    
+
 
 })
