@@ -97,12 +97,15 @@ const styles = StyleSheet.create({
 
     subNameContainer: {
         paddingHorizontal: 15,
-        paddingTop: 30
-
+        paddingTop: 30,
+     
 
     },
 
-    leadDetailContainer:{},
+    leadDetailContainer:{
+        
+
+    },
     label:{
         fontSize: 12,
         color: colors.PRIMARY_RED,

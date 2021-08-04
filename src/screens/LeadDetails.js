@@ -6,7 +6,7 @@ import {
   Image,
   View,
   TextInput,
-  TouchableOpacity, FlatList,
+  TouchableOpacity, FlatList, ScrollView,
 } from "react-native";
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
@@ -26,16 +26,18 @@ function LeadDetails({ navigation }) {
 
   const dataTorender=(data)=>{
     return(
-      <View style={styles.leadContainer}>
-        <View style={{width: '85%'}}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} style={styles.leadContainer}>
+        <View style={styles.leadBund}>
+        <View style={{width: '90%'}}>
           <Text style={styles.leadName}>{data.item._data.firstName}{data.item._data.lastName}</Text>
           <Text style={styles.leadAddress}>{data.item._data.workEmail}</Text>
           <Text style={styles.leadAddress}>{data.item._data.workCategory}</Text>
         </View>
-        <TouchableOpacity onPress={()=> navigation.navigate('Lead',{data})}>
+        <TouchableOpacity style={styles.btnCont} onPress={()=> navigation.navigate('Lead',{data})}>
           <Image  style={styles.learnMore} source={images.default.learnMore}/>
         </TouchableOpacity>
-      </View>
+        </View>
+      </ScrollView>
     )
   }
   return (
@@ -54,15 +56,18 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.WHITE
 
+
     },
     leadContainer: {
       flexDirection: 'row',
       width: '100%',
-      height: '25%',
+      height: '20%',
       borderBottomWidth: 1,
       borderBottomColor: colors.GREY,
-      alignItems: 'center',
-      justifyContent: 'center'
+       // justifyContent: 'center',
+      paddingTop: 10,
+      backgroundColor: 'white',
+      marginTop: 20,
     },
     leadName: {
         fontSize: sizes.LEAD_NAME,
@@ -79,8 +84,22 @@ const styles = StyleSheet.create({
         fontSize: sizes.LEAD_ADDRESS,
         fontFamily: fonts.Poppins
     },
+
+
+    btnCont : {
+      justifyContent: "center",
+      alignItems: 'center'
+    },
+
     learnMore: {
         width: 30,
-        height: 30
+        height: 30,
+        
+        
+        
+    },
+
+    leadBund: {
+      flexDirection: 'row'
     }
 })
