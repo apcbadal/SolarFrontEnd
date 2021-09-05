@@ -67,10 +67,6 @@ function PaymentDetails({ navigation }) {
       }
     }
 
-
-
-
-
   return (
     <SafeAreaView  style={styles.mainContainer}>
       <KeyboardAvoidingView behavior="position">

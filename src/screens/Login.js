@@ -126,7 +126,7 @@ function Login({ navigation }) {
         >
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Payment')}>
           <Text style={styles.newUser}>New user? Register</Text>
         </TouchableOpacity>
       </View>

@@ -71,9 +71,7 @@ function Register({ navigation }) {
         backgroundColor: colors.PRIMARY_RED,
         duration: Snackbar.LENGTH_SHORT,
       })
-      navigation.navigate('Location', {
-        docID: email
-      })
+      navigation.navigate('Location',{email:email})
     })
     .catch((error) => {
 

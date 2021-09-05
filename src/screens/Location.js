@@ -24,14 +24,7 @@ import Snackbar from "react-native-snackbar";
 import FirebaseConfig from "../../configuration/config";
 
 function Location({ route, navigation }) {
-  const[email,setEmail]=useState(null)
-  useEffect(()=>{
-    const email =auth().currentUser.email
-    if(email!==null){
-      setEmail(email)
-    }
-
-  },[email])
+  const email =navigation.getParam("email")
 
   const [address1, setAddress1] = useState('')
   const [address2, setAddress2] = useState('')
@@ -129,7 +122,7 @@ function Location({ route, navigation }) {
   value={zipcode}
   onChangeText={(text) => setZipcode(text)}/>
         </View>
-        
+
 
       </ScrollView>
       </KeyboardAvoidingView>
@@ -141,7 +134,7 @@ function Location({ route, navigation }) {
           >
             <Text style={styles.locationFont}>Set Location</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('PrimeMember')}>
+          <TouchableOpacity onPress={() => navigation.navigate('PrimeMember',{email:email})}>
             <Text style={styles.skip}>Skip for now</Text>
           </TouchableOpacity>
         </View>
