@@ -23,7 +23,7 @@ function PrimeMember({ navigation }) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
-
+  const email =navigation.getParam("email")
   return (
     <SafeAreaView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>
@@ -45,7 +45,7 @@ function PrimeMember({ navigation }) {
         <Text style={styles.bulletPoint}>3. Unlimited user date</Text>
       </View>
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.buyBtn} onPress={() => navigation.navigate('Payment')}>
+        <TouchableOpacity style={styles.buyBtn} onPress={() => navigation.navigate('Payment',{email:email})}>
           <Text style={styles.buyFont}>Buy</Text>
         </TouchableOpacity>
         {/*<TouchableOpacity onPress={() => navigation.navigate('DummyLeadDetails')}>

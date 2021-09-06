@@ -19,6 +19,8 @@ import LeadDetails from '../screens/LeadDetails'
 
 import * as images from '../../constants/images'
 import Lead from '../screens/Lead'
+import PayPalPayment from "../screens/Paypal/Payment";
+import Payment from "../screens/Paypal/Payment";
 
 class NavigationDrawerStructure extends Component {
   toggleDrawer = () => {
@@ -44,14 +46,6 @@ const FirstActivity_StackNavigator = createStackNavigator({
   Home: {
     screen: Landing,
     navigationOptions: {headerShown: false }
-    // ({ navigation }) => ({
-    //   headerRight: <Text>Solar </Text>, //will be change later, this is main header of application
-    //   headerLeft: <NavigationDrawerStructure navigationProps={navigation} />, // drawer icon will appear
-    //   headerStyle: {
-    //     backgroundColor: '#fff',
-    //   },
-    //   headerTintColor: '#fff',
-    // }),
   },
   Location: {
     screen: Location,
@@ -68,6 +62,10 @@ const FirstActivity_StackNavigator = createStackNavigator({
   PaymentDetail: {
     screen: PaymentDetails,
     navigationOptions: { headerShown: false },
+  },
+  PayPalPayment: {
+    screen: Payment,
+    navigationOptions: { headerShown: false }
   },
   Register: {
     screen: Register,
@@ -99,7 +97,7 @@ const FirstActivity_StackNavigator = createStackNavigator({
   },
   Lead: {
     screen: Lead,
-    
+
   },
   ResetPassword: {
     screen: ResetPassword,
