@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import {ActivityIndicator, View, Dimensions, Image} from 'react-native';
 import {WebView} from 'react-native-webview';
-
+import FirebaseConfig from "../../../configuration/config";
+import firestore from "@react-native-firebase/firestore";
+import auth from "@react-native-firebase/auth";
 
 const {width, height} = Dimensions.get('screen');
 
 export default function Payment(props) {
-  const route = useRoute();
-  const email=FirebaseConfig.auth().currentUser.email;
+  const [user,setUser]=useState(null)
+  const[email,setEmail] =useState(null)
+  useEffect(()=>{
+    setEmail(auth().currentUser.email);
+    if(email) {
+      firestore().collection("Users").doc(email).get().then((response) => {
+        setUser(response)
+      })
+      if (user._data.isPayment === true) {
+        props.navigation.navigate("LeadDetails")
+      } else {
+        console.log("! Payment ")
+      }
+    }
+  },[user])
+
  // const email='apcbadal@gmail.com'
   const stateChng = (navState) => {
     //  console.log(navState);
     const {url, title} = navState;
-    if (title == 'PayPal Sucess') {
+    if (title === 'PayPal Sucess') {
       console.log('url', url);
       let spliturl = url.split('?');
       // console.log("spliturl",spliturl);
@@ -37,7 +53,7 @@ export default function Payment(props) {
       startInLoadingState={true}
       onNavigationStateChange={stateChng}
       renderLoading={() => <Loading />}
-      source={{uri: 'https://cim8fj7mwn.us-east-2.awsapprunner.com/:' + email,method:'get'}}
+      source={{uri: 'https://cim8fj7mwn.us-east-2.awsapprunner.com/pay/:' + email,method:'get'}}
     />
   );
 }
