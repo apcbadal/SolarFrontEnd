@@ -61,11 +61,11 @@ const styles = StyleSheet.create({
     leadContainer: {
       flexDirection: 'row',
       width: '100%',
-      height: '20%',
+      // height: '20%',
       borderBottomWidth: 1,
       borderBottomColor: colors.GREY,
        // justifyContent: 'center',
-      paddingTop: 10,
+      marginTop: 10,
       backgroundColor: 'white',
       marginTop: 20,
     },
@@ -74,12 +74,12 @@ const styles = StyleSheet.create({
         fontFamily: fonts.default.Poppins,
         fontWeight: '600',
         paddingTop: 5,
-        paddingBottom: 2,
-        paddingLeft: 8
+        marginBottom: 2,
+        marginLeft: 8
     },
     leadAddress: {
-        paddingLeft: 8,
-        paddingBottom: 5,
+        marginLeft: 8,
+        marginBottom: 5,
         maxWidth: '90%',
         fontSize: sizes.LEAD_ADDRESS,
         fontFamily: fonts.Poppins
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     },
 
     leadBund: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      backgroundColor: 'red'
     }
 })
