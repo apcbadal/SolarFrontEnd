@@ -101,6 +101,5 @@ const styles = StyleSheet.create({
 
     leadBund: {
       flexDirection: 'row',
-      backgroundColor: 'red'
     }
 })
