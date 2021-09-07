@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from "react";
 import {View, TextInput, Button, StyleSheet, Text, Image} from 'react-native';
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 export default function MakePayment(props) {
   const [amt, setamt] = React.useState('97');
+  const[email,setEmail] =useState(null)
+  const [user,setUser]=useState(null)
 
   const pay = () => {
-    if (amt !== '') {
-      props.navigation.navigate('PayPalPayment', {amt: amt});
+    setEmail(auth().currentUser.email);
+    if(email) {
+      firestore().collection("Users").doc(email).get().then((response) => {
+        setUser(response)
+      })
+      if (user && user._data.isPayment === true) {
+        props.navigation.navigate("LeadDetails")
+      } else {
+      props.navigation.navigate("PayPalPayment")
+      }
     }
   };
 

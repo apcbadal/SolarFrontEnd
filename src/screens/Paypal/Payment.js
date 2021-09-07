@@ -16,11 +16,6 @@ export default function Payment(props) {
       firestore().collection("Users").doc(email).get().then((response) => {
         setUser(response)
       })
-      if (user._data.isPayment === true) {
-        props.navigation.navigate("LeadDetails")
-      } else {
-        console.log("! Payment ")
-      }
     }
   },[user])
 
