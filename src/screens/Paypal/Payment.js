@@ -10,9 +10,13 @@ const {width, height} = Dimensions.get('screen');
 export default function Payment(props) {
   const [user,setUser]=useState(null)
   const[email,setEmail] =useState(null)
-  useEffect(()=>{
-    setEmail(auth().currentUser.email);
-    if(email) {
+  useEffect(async () => {
+    let emailDb;
+  emailDb=  auth().currentUser.email
+    if(emailDb!==null || true){
+      setEmail(emailDb);
+    }
+    if (email) {
       firestore().collection("Users").doc(email).get().then((response) => {
         setUser(response)
       })
