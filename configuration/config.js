@@ -1,20 +1,13 @@
 import  firebase from 'firebase';
-// Optionally import the services that you want to use
 
-//import "firebase/firestore";
-//import "firebase/functions";
-//import "firebase/storage";
-import auth from '@react-native-firebase/auth'
-import database from '@react-native-firebase/database'
-// Initialize Firebase
 const firebaseConfig = {
-  apiKey: 'AIzaSyDOU8BBpruCfkM8RDrfObLcPkL0Dt4lNCM',
-  authDomain: 'solar-8ebc6.firebaseapp.com',
-  databaseURL: 'https://solar-8ebc6-default-rtdb.firebaseio.com',
-  projectId: 'solar-8ebc6',
-  storageBucket: 'solar-8ebc6.appspot.com',
-  messagingSenderId: '378917616064',
-  appId: '1:378917616064:android:cea75b9550d98f964ef025'
+  apiKey: 'AIzaSyCX4DkSFDRrN_yIrDMPN2llHpQOIzmViSA',
+  authDomain: 'solar-go.firebaseapp.com',
+  databaseURL: 'https://solar-go-default-rtdb.firebaseio.com',
+  projectId: 'solar-go',
+  storageBucket: 'solar-go.appspot.com',
+  messagingSenderId: '569361359677',
+  appId: '1:569361359677:android:87aa63d2d1aca535001b54'
 };
 let FirebaseConfig;
 if(!firebase.apps.length){

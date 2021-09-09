@@ -71,6 +71,7 @@ function Location({ route, navigation }) {
     }
 
   return (
+    <ScrollView>
     <SafeAreaView style={styles.mainContainer}>
     <KeyboardAvoidingView  behavior="position">
       <View style={styles.headerContainer}>
@@ -140,6 +141,7 @@ function Location({ route, navigation }) {
         </View>
 
     </SafeAreaView>
+    </ScrollView>
   )
 }
 

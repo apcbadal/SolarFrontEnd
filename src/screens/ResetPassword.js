@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from "react";
 import {
   StyleSheet,
   KeyboardAvoidingView,
@@ -6,20 +6,26 @@ import {
   Image,
   View,
   TextInput,
-  TouchableOpacity,
-} from 'react-native'
+  TouchableOpacity, Alert,
+} from "react-native";
 
 import * as colors from '../../constants/color'
 import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
-
+import auth from  '@react-native-firebase/auth'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import sizes from '../../constants/sizes'
 
 function ResetPassword({navigation}) {
+  const [email,setEmail]=useState(null)
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
+  const sendResetPassLink=()=>{
+    auth().sendPasswordResetEmail(email).then(()=>
+    Alert.alert("A password reset link send to your email")
+    )
+  }
 
   return (
     <KeyboardAvoidingView behavior="height" style={styles.mainContainer}>
@@ -39,12 +45,15 @@ function ResetPassword({navigation}) {
       <View style={styles.inputContainer}>
         <View>
           <Text style={styles.text}>E-mail</Text>
-          <TextInput style={styles.input}></TextInput>
+          <TextInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            style={styles.input}/>
         </View>
       </View>
 
       <View style={styles.containerFour}>
-        <TouchableOpacity style={styles.sendBtn}>
+        <TouchableOpacity onPress={sendResetPassLink} style={styles.sendBtn}>
           <Text style={styles.sendEmailFont}>Send Email</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Register')}>
