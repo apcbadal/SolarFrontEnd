@@ -43,6 +43,22 @@ class NavigationDrawerStructure extends Component {
 }
 
 const FirstActivity_StackNavigator = createStackNavigator({
+  LeadDetails: {
+    screen: LeadDetails,
+    navigationOptions: ({ navigation }) => ({
+      headerRight: (
+        <Image
+          source={images.default.solarLogo}
+          style={{ width: 50, height: 30, paddingRight: 10 }}
+        />
+      ), //will be change later, this is main header of application
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />, // drawer icon will appear
+      headerStyle: {
+        backgroundColor: '#fff',
+      },
+      headerTintColor: '#fff',
+    }),
+  },
   Home: {
     screen: Landing,
     navigationOptions: {headerShown: false }
@@ -71,22 +87,7 @@ const FirstActivity_StackNavigator = createStackNavigator({
     screen: Register,
     navigationOptions: { headerShown: false },
   },
-  LeadDetails: {
-    screen: LeadDetails,
-    navigationOptions: ({ navigation }) => ({
-      headerRight: (
-        <Image
-          source={images.default.solarLogo}
-          style={{ width: 50, height: 30, paddingRight: 10 }}
-        />
-      ), //will be change later, this is main header of application
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />, // drawer icon will appear
-      headerStyle: {
-        backgroundColor: '#fff',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
+
   PrimeMember: {
     screen: PrimeMember,
     navigationOptions: { headerShown: false },

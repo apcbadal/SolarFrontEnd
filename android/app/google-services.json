@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:569361359677:android:87aa63d2d1aca535001b54",
+        "mobilesdk_app_id": "1:569361359677:android:108dac76ec97283c001b54",
         "android_client_info": {
-          "package_name": "com.gomediashark.colar"
+          "package_name": "com.gomediashark.solar"
         }
       },
       "oauth_client": [

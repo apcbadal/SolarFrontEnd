@@ -19,6 +19,7 @@ import sizes from '../../constants/sizes'
 import auth from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore'
 import Snackbar from 'react-native-snackbar';
+import { Screen } from "react-native-screens";
 
 
 function Register({ navigation }) {
@@ -116,7 +117,7 @@ function Register({ navigation }) {
 
 
   return (
-
+    <ScrollView>
     <SafeAreaView style={styles.mainContainer}>
 
     <KeyboardAvoidingView behavior="position" >
@@ -193,6 +194,7 @@ function Register({ navigation }) {
       </View>
 
     </SafeAreaView>
+    </ScrollView>
   )
 }
 

@@ -29,6 +29,7 @@ function Login({ navigation }) {
   )
 
   const LogIn = () => {
+    console.log(email, password)
     if (!email || !password) {
       Snackbar.show({
         text: 'Please fill all details',
@@ -37,17 +38,7 @@ function Login({ navigation }) {
       })
     } else {
       auth().signInWithEmailAndPassword(email, password).then(()=>{
-        console.log("User signed in.")
-        firestore().collection("Users").doc(email).get().then((response)=>
-        {
-          setUser(response)
-        })
-        if(user._data.isPayment===true){
-              navigation.navigate("LeadDetails")
-        }
-        else{
-            navigation.navigate("PrimeMember")
-        }
+        console.log("user signed in")
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -122,7 +113,7 @@ function Login({ navigation }) {
       <View>
         <TouchableOpacity
           style={styles.loginBtn}
-          onPress={() => LogIn()}
+          onPress={LogIn}
         >
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>

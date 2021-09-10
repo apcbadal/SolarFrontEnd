@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
       borderBottomWidth: 1,
       borderBottomColor: colors.GREY,
        // justifyContent: 'center',
-      marginTop: 10,
       backgroundColor: 'white',
       marginTop: 20,
     },
@@ -94,9 +93,9 @@ const styles = StyleSheet.create({
     learnMore: {
         width: 30,
         height: 30,
-        
-        
-        
+
+
+
     },
 
     leadBund: {
