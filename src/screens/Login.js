@@ -48,9 +48,8 @@ function Login({ navigation }) {
         })
         if (userData && userData._data.isPayment === true) {
             console.log("Hello")
-          return(
-            <MainNavigator/>
-          )
+          navigation.navigate('LeadDetails')
+
         }
         else{
           navigation.navigate('Location',{email:email})
@@ -81,7 +80,15 @@ function Login({ navigation }) {
             textColor: 'white',
             backgroundColor: 'red'
           })
-        } else{
+        }
+        else if (errorCode === 'auth/weak-password'){
+          Snackbar.show({
+            text: 'Please try with 6 character password',
+            textColor: 'white',
+            backgroundColor: 'red'
+          })
+        }
+        else{
           return null
         }
       })

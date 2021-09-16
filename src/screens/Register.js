@@ -34,6 +34,13 @@ function Register({ navigation }) {
   const [userCreated, setUserCreated] = useState(false)
 
   const saveDataToDB = () => {
+    Snackbar.show({
+      text: 'Registration Successfully.',
+      textColor: colors.WHITE,
+      backgroundColor: colors.PRIMARY_RED,
+      duration: Snackbar.LENGTH_SHORT,
+    })
+    navigation.navigate('Location',{email:email})
   firestore()
   .collection('Users').doc(email)
   .set({
@@ -65,15 +72,6 @@ function Register({ navigation }) {
       setUserCreated(true)
     })
     .then(() => saveDataToDB())
-    .finally(()=> {
-      Snackbar.show({
-        text: 'Registration Successfully.',
-        textColor: colors.WHITE,
-        backgroundColor: colors.PRIMARY_RED,
-        duration: Snackbar.LENGTH_SHORT,
-      })
-      navigation.navigate('Location',{email:email})
-    })
     .catch((error) => {
 
       console.log(error)
@@ -99,7 +97,8 @@ function Register({ navigation }) {
           backgroundColor: 'red'
         })
 
-      }else{
+      }
+      else{
 
       }
     })

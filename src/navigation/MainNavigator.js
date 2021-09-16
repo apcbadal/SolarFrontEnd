@@ -21,6 +21,7 @@ import * as images from '../../constants/images'
 import Lead from '../screens/Lead'
 import PayPalPayment from "../screens/Paypal/Payment";
 import Payment from "../screens/Paypal/Payment";
+import AdminSideMenu from "./SideMenu";
 
 class NavigationDrawerStructure extends Component {
   toggleDrawer = () => {
@@ -32,10 +33,10 @@ class NavigationDrawerStructure extends Component {
       <View style={{ flexDirection: 'row', marginLeft: 5 }}>
         <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
           {/*Donute Button Image */}
-          {/*<Image for drawer icon
-            source={require("../images/drawer.png")}
+          <Image for drawer icon
+            source={require("../../assets/images/drawer.png")}
             style={{ width: 25, height: 25, marginLeft: 20 }}
-          />*/}
+          />
         </TouchableOpacity>
       </View>
     )
@@ -112,8 +113,8 @@ const Drawer = createDrawerNavigator(
     NavScreen1: { screen: FirstActivity_StackNavigator },
   },
   {
-    /*contentComponent: AdminSideMenu,*/ //this is for side menu drawer
-    drawerPosition: 'left', //drawer opening in left side
+    contentComponent: AdminSideMenu,
+    drawerPosition: 'right', //drawer opening in left side
     drawerWidth: Dimensions.get('window').width - 120,
   }
 )

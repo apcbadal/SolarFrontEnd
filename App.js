@@ -29,16 +29,18 @@ const Stack = createStackNavigator();
 const App = () => {
   const[loggedIn,setLoggedin]=useState(false)
   const[userData,setUserData]=useState(null)
-  const[email,setEmail] =useState(null)
+  const[loaded,setLoaded] =useState(null)
   const [isPayment,setIsPayment]=useState(null)
  const  getCurrentUser=()=> {
     auth().onAuthStateChanged((user) => {
-      console.log(user)
+      console.log("User"+user)
       if (!user) {
         setLoggedin(false)
       } else {
         firestore().collection("Users").doc(user.email).get().then((response) => {
           setUserData(response)
+          console.log(response)
+
         })
         if (userData && userData._data.isPayment === true) {
           setIsPayment(true)
@@ -51,7 +53,7 @@ const App = () => {
 
   useEffect(()=>{
     getCurrentUser()
-  },[loggedIn,isPayment])
+  },)
 
   if (!loggedIn) {
     return (
@@ -61,25 +63,9 @@ const App = () => {
                         options={
                           {headerShown:false
                           }}/>
-          <Stack.Screen name="Register" component={Register} options={{title:<View><Text>Go Solar</Text></View>,
-            headerTitleStyle:{
-              display:'flex',
-              marginLeft:'auto'
-            },
-          }}/>
-          <Stack.Screen name="Location" component={Location} options={{title:<View><Text>Go Solar</Text></View>,
-            headerTitleStyle:{
-              display:'flex',
-              marginLeft:'auto'
-            },
-          }}/>
-          <Stack.Screen name="Login" component={Login} options={{title :<View style={styles.logoContainer}><Text>Go Solar</Text></View>,
-            headerTitleStyle:{
-              display:'flex',
-              marginLeft:'auto'
-            },
-
-          }} />
+          <Stack.Screen name="Register" component={Register} options={{headerShown:false}}/>
+          <Stack.Screen name="Location" component={Location} options={{headerShown:false}}/>
+          <Stack.Screen name="Login" component={Login} options={{headerShown:false}} />
           <Stack.Screen name="Payment" component={MakePayment} options={{title :<View style={styles.logoContainer}><Text>Go Solar</Text></View>,
             headerTitleStyle:{
               display:'flex',
@@ -94,7 +80,7 @@ const App = () => {
             },
 
           }} />
-          <Stack.Screen name="ForgotPassword" component={ResetPassword} options={{title:<View><Text>Go Solar</Text></View>,
+          <Stack.Screen name="ResetPassword" component={ResetPassword} options={{title:<View><Text>Go Solar</Text></View>,
             headerTitleStyle:{
               display:'flex',
               marginLeft:'auto'
@@ -114,7 +100,9 @@ const App = () => {
             },
 
           }}/>
+
         </Stack.Navigator>
+
       </NavigationContainer>
     )
   }
