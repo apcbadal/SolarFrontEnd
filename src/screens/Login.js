@@ -19,11 +19,13 @@ import Snackbar from "react-native-snackbar";
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
 import color from "../../constants/color";
+import MainNavigator from "../navigation/MainNavigator";
 
 function Login({ navigation }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [user,setUser]=useState(null)
+  const[userData,setUserData]=useState(null)
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
@@ -39,8 +41,23 @@ function Login({ navigation }) {
     } else {
       auth().signInWithEmailAndPassword(email, password).then(()=>{
         console.log("user signed in")
+        firestore().collection("Users").doc(email).get().then((response) => {
+          setUserData(response)
+          console.log(response)
+
+        })
+        if (userData && userData._data.isPayment === true) {
+            console.log("Hello")
+          return(
+            <MainNavigator/>
+          )
+        }
+        else{
+          navigation.navigate('Location',{email:email})
+        }
       })
       .catch((error) => {
+        console.log(error)
         const errorCode = error.code;
         if (errorCode === 'auth/user-not-found') {
           console.log('invalid user')

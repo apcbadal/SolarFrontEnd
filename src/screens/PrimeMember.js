@@ -19,11 +19,11 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import LocationIcon from 'react-native-vector-icons/Entypo'
 import sizes from '../../constants/sizes'
 
-function PrimeMember({ navigation }) {
+function PrimeMember({ route:{params},navigation }) {
   const backIcon = (
     <Icon style={styles.backIcon} name="chevron-left" size={15} color={colors.GREY} solid />
   )
-  const email =navigation.getParam("email")
+  const email =params.email
   return (
     <SafeAreaView behavior="position" style={styles.mainContainer}>
       <View style={styles.headerContainer}>

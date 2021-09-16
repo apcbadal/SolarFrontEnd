@@ -23,8 +23,8 @@ import firestore from '@react-native-firebase/firestore'
 import Snackbar from "react-native-snackbar";
 import FirebaseConfig from "../../configuration/config";
 
-function Location({ route, navigation }) {
-  const email =navigation.getParam("email")
+function Location({ route:{params}, navigation }) {
+  const email =params.email
 
   const [address1, setAddress1] = useState('')
   const [address2, setAddress2] = useState('')
@@ -64,7 +64,7 @@ function Location({ route, navigation }) {
       )
       .catch((err) => console.log(err))
       .finally(()=> {
-        navigation.navigate('PrimeMember')
+        navigation.navigate('PrimeMember',{email:email})
       })
 
       }

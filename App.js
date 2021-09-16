@@ -18,6 +18,8 @@ import createStackNavigator from "@react-navigation/stack/src/navigators/createS
 import firestore from "@react-native-firebase/firestore";
 import Payment from "./src/screens/Paypal/Payment";
 import MakePayment from "./src/screens/MakePayment";
+import LeadDetails from "./src/screens/LeadDetails";
+import PrimeMember from "./src/screens/PrimeMember";
 const store = createStore(rootReducer, applyMiddleware(thunk))
 const Stack = createStackNavigator();
 
@@ -39,12 +41,9 @@ const App = () => {
           setUserData(response)
         })
         if (userData && userData._data.isPayment === true) {
-                  setIsPayment(true)
-            } else {
-
-              setIsPayment(false)
-            }
+          setIsPayment(true)
           setLoggedin(true)
+        }
       }
 
     })
@@ -52,7 +51,7 @@ const App = () => {
 
   useEffect(()=>{
     getCurrentUser()
-  },[loggedIn])
+  },[loggedIn,isPayment])
 
   if (!loggedIn) {
     return (
@@ -81,46 +80,45 @@ const App = () => {
             },
 
           }} />
+          <Stack.Screen name="Payment" component={MakePayment} options={{title :<View style={styles.logoContainer}><Text>Go Solar</Text></View>,
+            headerTitleStyle:{
+              display:'flex',
+              marginLeft:'auto'
+            },
+
+          }} />
+          <Stack.Screen name="PrimeMember" component={PrimeMember} options={{title :<View style={styles.logoContainer}><Text>Go Solar</Text></View>,
+            headerTitleStyle:{
+              display:'flex',
+              marginLeft:'auto'
+            },
+
+          }} />
           <Stack.Screen name="ForgotPassword" component={ResetPassword} options={{title:<View><Text>Go Solar</Text></View>,
             headerTitleStyle:{
               display:'flex',
               marginLeft:'auto'
             },
           }} />
+          <Stack.Screen name="LeadDetails" component={LeadDetails} options={{title:<View><Text>Go Solar</Text></View>,
+            headerTitleStyle:{
+              display:'flex',
+              marginLeft:'auto'
+            },
+
+          }}/>
+          <Stack.Screen name="PayPalPayment" component={Payment} options={{title:<View><Text>Go Solar</Text></View>,
+            headerTitleStyle:{
+              display:'flex',
+              marginLeft:'auto'
+            },
+
+          }}/>
         </Stack.Navigator>
       </NavigationContainer>
     )
   }
-  if(loggedIn && !isPayment){
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="MakePayment">
-        <Stack.Screen name="MakePayment" component={MakePayment}
-                      options={
-                        {headerShown:false
-                        }}/>
-        <Stack.Screen name="LeadDetails" component={LeadDetails} options={{title:<View><Text>Go Solar</Text></View>,
-          headerTitleStyle:{
-            display:'flex',
-            marginLeft:'auto'
-          },
 
-        }}/>
-        <Stack.Screen name="PayPalPayment" component={Payment} options={{title :<View style={styles.logoContainer}><Text>Go Solar</Text></View>,
-          headerTitleStyle:{
-            display:'flex',
-            marginLeft:'auto'
-          },
-
-        }} />
-        <Stack.Screen name="ForgotPassword" component={ResetPassword} options={{title:<View><Text>Go Solar</Text></View>,
-          headerTitleStyle:{
-            display:'flex',
-            marginLeft:'auto'
-          },
-        }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  }
   if(loggedIn && isPayment) {
     return (
       <Provider store={store}>
