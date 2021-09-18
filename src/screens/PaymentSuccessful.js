@@ -16,8 +16,7 @@ import * as images from '../../constants/images'
 import * as fonts from '../../constants/font'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
-import LocationIcon from 'react-native-vector-icons/Entypo'
-import sizes from '../../constants/sizes'
+
 
 function PaymentSuccessful({ navigation }) {
   const backIcon = (

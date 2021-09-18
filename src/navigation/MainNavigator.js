@@ -114,7 +114,7 @@ const Drawer = createDrawerNavigator(
   },
   {
     contentComponent: AdminSideMenu,
-    drawerPosition: 'right', //drawer opening in left side
+    drawerPosition: 'left', //drawer opening in left side
     drawerWidth: Dimensions.get('window').width - 120,
   }
 )

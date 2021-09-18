@@ -41,19 +41,17 @@ function Login({ navigation }) {
     } else {
       auth().signInWithEmailAndPassword(email, password).then(()=>{
         console.log("user signed in")
-        firestore().collection("Users").doc(email).get().then((response) => {
-          setUserData(response)
-          console.log(response)
+        firestore().collection("Users").doc(email).get().then((res) => {
+          setUserData(res)
+         // console.log(response)
+
+            navigation.navigate('Location',{email:email})
+
+
 
         })
-        if (userData && userData._data.isPayment === true) {
-            console.log("Hello")
-          navigation.navigate('LeadDetails')
 
-        }
-        else{
-          navigation.navigate('Location',{email:email})
-        }
+
       })
       .catch((error) => {
         console.log(error)
