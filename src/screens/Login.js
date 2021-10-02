@@ -40,15 +40,9 @@ function Login({ navigation }) {
       })
     } else {
       auth().signInWithEmailAndPassword(email, password).then(()=>{
-        console.log("user signed in")
         firestore().collection("Users").doc(email).get().then((res) => {
-          setUserData(res)
-         // console.log(response)
-
-            navigation.navigate('Location',{email:email})
-
-
-
+            setUserData(res)
+          navigation.navigate('Location',{email:email})
         })
 
 
@@ -139,7 +133,7 @@ function Login({ navigation }) {
         >
           <Text style={styles.loginFont}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Payment')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
           <Text style={styles.newUser}>New user? Register</Text>
         </TouchableOpacity>
       </View>

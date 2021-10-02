@@ -109,7 +109,7 @@ function Register({ navigation }) {
     <ScrollView>
     <SafeAreaView style={styles.mainContainer}>
 
-    <KeyboardAvoidingView behavior="position" >
+    <KeyboardAvoidingView >
       <View style={styles.headerContainer}>
         <TouchableOpacity style={styles.backBlock} onPress={() => navigation.goBack()}>
           {backIcon}
@@ -136,6 +136,8 @@ function Register({ navigation }) {
           <TextInput
             style={styles.input}
             value={email}
+            autoCapitalize={"none"}
+            keyboardType={"email-address"}
             onChangeText= {(text)=> setEmail(text)}
             >
             </TextInput>

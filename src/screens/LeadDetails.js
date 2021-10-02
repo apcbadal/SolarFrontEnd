@@ -29,7 +29,7 @@ function LeadDetails({ navigation }) {
       <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }} style={styles.leadContainer}>
         <View style={styles.leadBund}>
         <View style={{width: '90%'}}>
-          <Text style={styles.leadName}>{data.item._data.firstName}{data.item._data.lastName}</Text>
+          <Text style={styles.leadName}>{data.item._data.firstName}{" "}{data.item._data.lastName}</Text>
           <Text style={styles.leadAddress}>{data.item._data.workEmail}</Text>
           <Text style={styles.leadAddress}>{data.item._data.workCategory}</Text>
         </View>

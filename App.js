@@ -92,12 +92,7 @@ const App = () => {
             },
 
           }} />
-          <Stack.Screen name="ResetPassword" component={ResetPassword} options={{title:<View><Text>Go Solar</Text></View>,
-            headerTitleStyle:{
-              display:'flex',
-              marginLeft:'auto'
-            },
-          }} />
+          <Stack.Screen name="ResetPassword" component={ResetPassword} options={{headerShown:false}} />
           <Stack.Screen name="LeadDetails" component={LeadDetails} options={{headerShown:false}}/>
           <Stack.Screen name="PayPalPayment" component={Payment} options={{title:<View><Text>Go Solar</Text></View>,
             headerTitleStyle:{

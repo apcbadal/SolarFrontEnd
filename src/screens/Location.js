@@ -32,7 +32,6 @@ function Location({ route:{params}, navigation }) {
   const [stateName, setStateName] = useState('')
   const [zipcode, setZipcode] = useState('')
 
-  // console.log(`DOCID: ${JSON.stringify(docId)}`)
   const locatIcon = (
     <LocationIcon style={styles.userIcon} name="location-pin" size={25} color={colors.GREY} />
   )

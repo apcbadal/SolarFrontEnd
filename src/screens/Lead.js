@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Linking } from "react-native";
 
 
 import * as colors from '../../constants/color'
@@ -31,6 +31,7 @@ function Lead({navigation,route}) {
     let company = data.item._data.companyName
     let email = data.item._data.workEmail
     let workCategory = data.item._data.workCategory
+    let phoneNum=data.item._data.phoneNum
 
 
 
@@ -42,7 +43,7 @@ function Lead({navigation,route}) {
                         {user}
                     <View style={styles.subNameContainer}>
                         <Text style={styles.label}>Name</Text>
-                        <Text style={styles.value}>{firstName + lastName}</Text>
+                        <Text style={styles.value}>{firstName} {""} {lastName}</Text>
                     </View>
                 </View>
                 <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
@@ -69,12 +70,12 @@ function Lead({navigation,route}) {
 
             </View>
             <View style={styles.btnContainer}>
-                <TouchableOpacity style={styles.callNowBtn}>
+                <TouchableOpacity style={styles.callNowBtn} onPress={()=>Linking.openURL('tel:'+phoneNum)}>
                     <Text style={styles.callNowText}>
                         Call now
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.mailNowBtn} >
+                <TouchableOpacity onPress={()=>Linking.openURL('mailto:'+mail)} style={styles.mailNowBtn} >
                     <Text style={styles.mailNowText}>
                         Mail now
                     </Text>
@@ -98,12 +99,12 @@ const styles = StyleSheet.create({
     subNameContainer: {
         paddingHorizontal: 15,
         paddingTop: 30,
-     
+
 
     },
 
     leadDetailContainer:{
-        
+
 
     },
     label:{
