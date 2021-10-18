@@ -43,8 +43,7 @@ function Register({ navigation }) {
     companyname: companyName
   })
   .then(() =>
-  console.log('data set success')
-
+    navigation.navigate('Location',{email:email})
   )
   .catch((err) => console.log(err))
   }
@@ -62,10 +61,9 @@ function Register({ navigation }) {
     console.log('calling below func')
     auth().createUserWithEmailAndPassword(email, password)
     .then(() => {
-      console.log('User account created & signed in!');
       setUserCreated(true)
+      saveDataToDB()
     })
-    .then(() => saveDataToDB())
     .catch((error) => {
 
       console.log(error)
@@ -93,12 +91,6 @@ function Register({ navigation }) {
       }
     })
 
-      // console.log('calledfunction')
-
-      // navigation.navigate('Location', {
-      //   screen: 'Location',
-      //   params: { docId: email },
-      // });
     }
 
   }

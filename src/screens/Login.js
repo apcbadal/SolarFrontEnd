@@ -31,7 +31,6 @@ function Login({ navigation }) {
   )
 
   const LogIn = () => {
-    console.log(email, password)
     if (!email || !password) {
       Snackbar.show({
         text: 'Please fill all details',

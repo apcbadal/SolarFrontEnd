@@ -6,21 +6,19 @@ import rootReducer from './src/redux/reducers'
 import { createStore, applyMiddleware } from 'redux'
 import * as Sentry from '@sentry/react-native'
 import Location from './src/screens/Location'
-
 import { NavigationContainer } from "@react-navigation/native";
 import auth from "@react-native-firebase/auth";
 import Landing from "./src/screens/Landing";
 import Register from "./src/screens/Register";
 import Login from "./src/screens/Login";
 import ResetPassword from "./src/screens/ResetPassword";
-import { Image, Text, View, StyleSheet, ActivityIndicator } from "react-native";
+import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import createStackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
 import firestore from "@react-native-firebase/firestore";
 import Payment from "./src/screens/Paypal/Payment";
 import MakePayment from "./src/screens/MakePayment";
 import LeadDetails from "./src/screens/LeadDetails";
 import PrimeMember from "./src/screens/PrimeMember";
-import Colors from "react-native/Libraries/NewAppScreen/components/Colors";
 import * as colors from "./constants/color";
 const store = createStore(rootReducer, applyMiddleware(thunk))
 const Stack = createStackNavigator();
@@ -35,7 +33,6 @@ const App = () => {
   const [isPayment,setIsPayment]=useState(false)
  const  getCurrentUser=()=> {
     auth().onAuthStateChanged((user) => {
-      //console.log("User"+user)
       if (!user) {
         setLoggedin(false)
         setLoaded(true)
@@ -43,13 +40,11 @@ const App = () => {
       else{
         firestore().collection("Users").doc(user.email).get().then((res) => {
           setUserData(res)
+          console.log(res._data.isPayment)
           setLoaded(true)
-            setLoggedin(true)
-         // console.log(res._data.isPayment)
+          setLoggedin(true)
           if(res._data.isPayment){
-            console.log(res._data.isPayment)
             setIsPayment(true)
-
           }
         })
       }
